@@ -1,0 +1,10 @@
+body {
+    font-family: 'Lucida Grande', Tahoma, Verdana, sans-serif,FontCard;
+    transition: margin 120ms linear;
+    color:#4e4e4e;
+    background: url("/app/webroot/img/Main_background.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}

@@ -1,0 +1,21 @@
+.table.table-hover tr:hover{
+    background: #333;
+    color: #fff; 
+    text-decoration: 0 0 5px #fff;
+    -moz-box-shadow: 0 3px 10px 0 #CCC;
+    -webkit-box-shadow: 0 0.5px 5px 0 #CCC;
+}
+
+.table.table-hover tr td{
+    text-align: left;
+}
+
+.begin{
+    margin: 1% 0 0 1%;
+    float: left;
+}
+
+.img-thumbnail{
+    width: 175px;
+    height: 180px;
+}

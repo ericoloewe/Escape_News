@@ -1,0 +1,48 @@
+body {
+    padding-top: 50px;
+}
+
+.container .starter-template {
+    padding: 40px 15px;
+    text-align: center;
+    background-color:rgba(0, 0, 0, 0.87);
+    color: #fff;
+    font-weight: bold;
+}
+
+footer{
+    max-width: 1150px;
+    margin: auto auto auto auto;
+    text-align: left;
+}
+
+.navbar-brand{
+    font-weight: bold;
+}
+
+.form-control{
+    border-radius: 0;
+    background-color: #333;
+    color: #fff;
+}
+
+.img-thumbnail{
+    background-color: #333;
+    border-color: #808080;
+    color: #333;
+}
+
+video{
+    margin: -210px 0 0 -15px;
+    width: 1140px;
+    height: 900px;
+}
+
+video#bgvid {
+    position: fixed; right: 0; bottom: 0;
+    min-width: 100%; min-height: 100%;
+    width: auto; height: auto; z-index: -100;
+    background: url(polina.jpg) no-repeat;
+    background-size: cover;
+    z-index: 20;
+}

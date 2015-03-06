@@ -1,0 +1,14 @@
+.new-user{
+    max-width: 980px;
+}
+
+.img-thumbnail{
+    float: left;
+    margin: 0 0 0 18%;
+    width: 175px;
+    height: 180px;
+}
+
+#InputFile{
+    float: right;
+}
