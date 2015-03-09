@@ -32,6 +32,7 @@
 		//echo $this->Html->css('cake.generic');
         echo $this->Html->css('default');
         echo $this->Html->css(array('/css/Features/bootstrap-theme.min','/css/Features/bootstrap.min'));
+        echo $this->Html->css('/css/Pages/Main');
 		echo $this->fetch('meta');
 		echo $this->fetch('css');        
 	?>
@@ -103,8 +104,8 @@
             </nav>
         </div>
     </div>
-    <div id="container">
-    <div id="content">
+    <div class="container">
+    <div class="content">
           <?php echo $this->Session->flash();
                 echo $this->fetch('content'); ?>
     </div>

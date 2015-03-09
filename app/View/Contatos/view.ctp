@@ -1,5 +1,5 @@
-<?php echo $this->Html->css('/css/Pages/Main'); ?>
-<link type="text/css" rel="stylesheet" href="/Styles/Pages/Contact/Contact.css">
+<?php echo $this->Html->css('/css/Pages/Contato/View'); ?>
+
 <div class="row">
     <div class="col-md-12">
         <div class="page-header">
