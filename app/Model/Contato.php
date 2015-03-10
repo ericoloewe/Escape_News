@@ -17,7 +17,7 @@ class Contato extends AppModel {
                 'message' => 'É necessario um email para contato!'
             )
         ),
-        'Mensagem' => array(
+        'mensagem' => array(
             'required' => array(
                 'rule' => array('notEmpty'),
                 'message' => 'É necessario uma mensagem!'

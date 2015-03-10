@@ -35,3 +35,17 @@ label{
     width: 400px;
     height: 200px;
 }
+
+.btn.btn-primary{
+    width: 440px;
+    margin: 0 0 0 -15px;
+}
+
+
+#contato{
+    text-align: center;
+    background-color:rgba(0, 0, 0, 0.87);
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+}

@@ -55,11 +55,11 @@
                             <ul class="nav navbar-nav">
                                 <li><a href="/">Home</a></li>
                                 <li class="dropdown">
-                                    <a href="Home.php?u=/Users/Users" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Usuarios <span class="caret"></span></a>
+                                    <a href="/jogadores/view" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Usuarios <span class="caret"></span></a>
                                     <ul  class="dropdown-menu" role="menu">
-                                        <li><a href="Home.php?u=/Users/New">Novo</a></li>
-                                        <li><a href="Home.php?u=/Users/Edit">Editar</a></li>
-                                        <li><a href="Home.php?u=/Users/Users">Ver</a></li>
+                                        <li><a href="/jogadores/New">Novo</a></li>
+                                        <li><a href="/jogadores/Edit">Editar</a></li>
+                                        <li><a href="/jogadores/view">Ver</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">

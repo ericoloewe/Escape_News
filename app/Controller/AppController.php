@@ -53,7 +53,7 @@ class AppController extends Controller {
     public function beforeFilter() {        
         // Mensagens de erro
         $this->Auth->loginError = __('Usuário e/ou senha incorreto(s)', true);
-        $this->Auth->authError = __('Você precisa fazer login para acessar esta página', true);              
+        $this->Auth->authError = __('Você precisa fazer login para acessar esta página', true);
     }
 
     public function beforeRender() {

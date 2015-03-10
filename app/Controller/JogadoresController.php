@@ -13,6 +13,15 @@ class JogadoresController extends AppController {
         }
     }
 
+    public function view($id=NULL)
+    {
+        if($id!=NULL)
+        {
+            $this->Jogador->id = $id;
+            $this->set('jogador', $this->Jogador->read());
+        }
+    }
+
     public function logout() {
         $this->redirect($this->Auth->logout());
     }

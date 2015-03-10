@@ -1,11 +1,13 @@
 <?php echo $this->Html->css('/css/Pages/Contato/View'); ?>
 
-<div class="row">
+<div class="row" <?php if(!$this->Session->read('Auth.User')) echo "id=\"contato\"";?>>
     <div class="col-md-12">
         <div class="page-header">
             <h2>Contato</h2>
         </div>
-        <form action="home.php?u=/Contact/Contact" class="form-horizontal" method="post" role="form">                
+        <?php
+            echo $this->Form->create('Contato', array('url' => array('controller' => 'Contatos','action' => 'save'),'class' => 'form-signin'));
+        ?>          
             <div class="col-md-5">
                 <div class="row">
                     <h3 style="float: left;"><i class="glyphicon glyphicon-pencil"></i> Deixe seu recado</h3>
@@ -14,8 +16,12 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-12">
-                            <label>Nome:</label>
-                            <input class="form-control" name="Nome" type="text" value="">
+                            <?php 
+                                echo $this->Form->input(
+                                    'nome',
+                                    array('class'=>'form-control')
+                                );
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -23,8 +29,12 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-12">
-                            <label>Email:</label>
-                            <input class="form-control" name="Email" type="text" value="">
+                            <?php 
+                                echo $this->Form->input(
+                                    'email',
+                                    array('class'=>'form-control')
+                                );
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -32,8 +42,12 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-12">
-                            <label>Assunto:</label>
-                            <input class="form-control" data-val="true" name="Assunto" type="text" value="">
+                            <?php 
+                                echo $this->Form->input(
+                                    'assunto',
+                                    array('class'=>'form-control')
+                                );
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -41,15 +55,19 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-12">
-                            <label>Mensagem:</label>
-                            <textarea class="form-control" cols="20" name="Mensagem" rows="2"></textarea>
+                            <?php 
+                                echo $this->Form->input(
+                                    'mensagem',
+                                    array('type' => 'textarea', 'escape' => false,'class'=>'form-control','rows' => '3')
+                                );
+                            ?>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-offset-0 col-md-10">
-                        <button style="margin:15px 0 15px 0;" type="submit" class="btn btn-primary">Enviar</button>
+                    <div class="col-md-12">                        
+                        <?php echo $this->Form->end(array('label' => 'Enviar','class' => 'btn btn-primary')); ?>
                     </div>
                 </div>
             </div>

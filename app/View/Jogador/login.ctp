@@ -14,4 +14,8 @@
         array('label' => array('class' => 'sr-only'),'class'=>'form-control','placeholder' => 'Password')
     );    
     echo $this->Form->end(array('label' => 'Start','class' => 'btn btn-lg btn-primary btn-block'));
+    echo $this->Html->link(
+        'Entre em Contato',
+        '/contatos/view', array('style' => 'color:#eee; font-weight: bold;')       
+    );    
 ?>
