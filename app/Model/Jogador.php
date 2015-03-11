@@ -12,7 +12,7 @@ class Jogador extends AppModel {
                 'rule' => array('notEmpty'),
                 'message' => 'A Name is required'
             )
-        ),        
+        ),                
         'email' => array(
             'required' => array(
                 'rule' => array('notEmpty'),
