@@ -55,11 +55,11 @@
                             <ul class="nav navbar-nav">
                                 <li><a href="/">Home</a></li>
                                 <li class="dropdown">
-                                    <a href="/jogadores/view" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Usuarios <span class="caret"></span></a>
+                                    <a href="/jogadores/ver" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Jogadores<span class="caret"></span></a>
                                     <ul  class="dropdown-menu" role="menu">
-                                        <li><a href="/jogadores/New">Novo</a></li>
-                                        <li><a href="/jogadores/Edit">Editar</a></li>
-                                        <li><a href="/jogadores/view">Ver</a></li>
+                                        <li><a href="/jogadores/novo">Novo</a></li>
+                                        <li><a href="/jogadores/editar">Editar</a></li>
+                                        <li><a href="/jogadores/ver">Ver</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
@@ -113,6 +113,7 @@
     <?php
     echo $this->Html->script('/js/Features/jquery-1.11.2.min.js');
     echo $this->Html->script('/js/Features/bootstrap.min.js');
+    echo $this->Html->script('/js/k9streetpoker.js');
     echo $this->fetch('script');
     ?>
 </body>

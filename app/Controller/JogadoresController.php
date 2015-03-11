@@ -13,13 +13,27 @@ class JogadoresController extends AppController {
         }
     }
 
-    public function view($id=NULL)
+    public function getusers($name=NULL,$page=NULL) {
+        if ($this->request->is('ajax')) {
+            $this->layout = "ajax";
+            $conditions = array("Jogador.nome LIKE" => "%{$name}%");
+            $this->set('page', $page);
+            $this->set('jogadores', $this->Jogador->find('all', array('conditions' => $conditions)));
+        }
+    }
+
+    public function ver($id=NULL)
     {
         if($id!=NULL)
         {
             $this->Jogador->id = $id;
             $this->set('jogador', $this->Jogador->read());
         }
+    }
+
+    public function novo()
+    {
+        
     }
 
     public function logout() {
