@@ -18,14 +18,13 @@ class Jogador extends AppModel {
                 'rule' => array('notEmpty'),
                 'message' => 'A email is required'
             )
-        ),
-        'privilegio' => array(
-            'valid' => array(
-                'rule' => array('inList', array(1, 2)),
-                'message' => 'Please enter a valid role',
-                'allowEmpty' => false
+        ),                
+        'phone' => array(
+            'required' => array(
+                'rule' => array('notEmpty'),
+                'message' => 'A email is required'
             )
-        )   
+        )
     );
     public function beforeSave($options = array()) {
         if (isset($this->data[$this->alias]['password'])) {

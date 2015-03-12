@@ -5,6 +5,7 @@ class ContatosController extends AppController {
         if(!$this->Session->read('Auth.User'))
             $this->layout = 'basic';
 	}
+
     public function save()
     {
         if ($this->request->is('post')) {

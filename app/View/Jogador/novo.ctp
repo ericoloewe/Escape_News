@@ -1,6 +1,6 @@
 <?php echo $this->Html->css('/css/Pages/Jogadores/Novo'); ?>
 
-<?php echo $this->Form->create('Jogador', array('url' => array('controller' => 'jogadores','action' => 'novo'),'class' => 'form-horizontal','role' => 'form')); ?>
+<?php echo $this->Form->create('Jogador', array('url' => array('controller' => 'jogadores','action' => 'novo'),'class' => 'form-horizontal','role' => 'form','type' => 'file')); ?>
 <!--<form class="form-horizontal" role="form" action="home.php?u=/Users/New" method="post" enctype="multipart/form-data">-->
     <div class="form-group">
         <img id="img-new" class="img-thumbnail" src="{imagem}" style="max-width: 200px; max-height: 200px;" alt="10">

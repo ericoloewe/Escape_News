@@ -33,7 +33,24 @@ class JogadoresController extends AppController {
 
     public function novo()
     {
-        
+        if ($this->request->is('post')) {            
+            if ($this->Jogador->save($this->request->data)) {
+                if($_FILES['InputFile']['error']!=4&&isset($_FILES['InputFile'])) {
+                    $conditions = array("Jogador.email LIKE" => "{$this->request->data['Jogador']['email']}");
+                    $jogador = $this->Jogador->find('all', array('conditions' => $conditions,'limit' => 1));
+                    $this->uploadFile($jogador[0]["Jogador"]["id"]);
+                } else $this->Session->setFlash("<script>alert('Erro ao subir imagem no servidor!')</script>");                
+                $this->Session->setFlash("<script>alert('Jogador Cadastrado Com Sucesso :)')</script>");
+                $this->redirect(array('action' => 'novo'));
+            } else {
+                $this->Session->setFlash("<script>alert('Erro ao Cadastrar Novo Usuario!')</script>");
+            }                        
+        }
+    }
+
+    public function uploadFile($file)
+    {
+        parent::uploadFile($file);
     }
 
     public function logout() {
