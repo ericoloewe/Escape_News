@@ -1,4 +1,4 @@
-.new-user{
+.form-horizontal{
     max-width: 980px;
 }
 
@@ -21,4 +21,14 @@
 .begin{
     margin: 1% 0 0 1%;
     float: left;
+}
+
+#deletarJogador{
+    float: right;
+    margin-right: 150px;
+}
+
+#deletarJogador a{
+    text-decoration: none;
+    color: #fff;
 }

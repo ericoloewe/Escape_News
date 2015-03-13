@@ -1,12 +1,13 @@
 <?php echo $this->Html->css('/css/Pages/Jogadores/Novo'); ?>
 
 <?php echo $this->Form->create('Jogador', array('url' => array('controller' => 'jogadores','action' => 'novo'),'class' => 'form-horizontal','role' => 'form','type' => 'file')); ?>
-<!--<form class="form-horizontal" role="form" action="home.php?u=/Users/New" method="post" enctype="multipart/form-data">-->
     <div class="form-group">
         <img id="img-new" class="img-thumbnail" src="{imagem}" style="max-width: 200px; max-height: 200px;" alt="10">
     </div>
     <div class="form-group">
-        <input type="file" onchange="pegarCaminhoArquivo()" name="InputFile" id="InputFile" accept=".jpg,.jpeg,.png">
+        <?php echo $this->Form->input('pic', 
+              array('name'=>'pic','label' => array('class' => 'sr-only'),'type' => 'file','id' => 'InputFile','accept' => '.jpg','onchange' => 'pegarCaminhoArquivo()')
+              ); ?>
     </div>
     <div class="form-group">
         <label class="col-sm-2 control-label">Nome*</label>

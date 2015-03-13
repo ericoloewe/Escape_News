@@ -61,10 +61,10 @@ class AppController extends Controller {
         // In the views $user['User']['username'] would display the logged in users username
     }
 
-    public function uploadFile($userID){        
+    public function uploadFoto($userID){        
         $pasta = $_SERVER['DOCUMENT_ROOT']."/app/webroot/img/pics/";
         $nome_final = $userID.'.jpg';
-        if(move_uploaded_file($_FILES['InputFile']['tmp_name'], $pasta . $nome_final))
+        if(move_uploaded_file($_FILES['pic']['tmp_name'], $pasta . $nome_final))
             $ret=TRUE;
         else
             $ret=FALSE;
