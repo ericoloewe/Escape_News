@@ -1,6 +1,6 @@
 <?php echo $this->Html->css('/css/Pages/Contato/View'); ?>
 
-<div class="row" <?php if(!$this->Session->read('Auth.User')) echo "id=\"contato\"";?>>
+<div class="row">
     <div class="col-md-12">
         <div class="page-header">
             <h2>Contato</h2>

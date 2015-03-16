@@ -98,7 +98,7 @@ class JogadoresController extends AppController {
 	    parent::beforeRender();
     }
 
-    public function beforeFilter() {
+    public function beforeFilter() {        
         parent::beforeFilter();
     }
 }

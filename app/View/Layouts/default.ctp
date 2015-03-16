@@ -36,6 +36,12 @@
 		echo $this->fetch('meta');
 		echo $this->fetch('css');        
 	?>
+    <?php    
+    echo $this->Html->script('/js/Features/bootstrap.min.js');
+    echo $this->Html->script('/js/Features/jquery-2.1.3.min.js');
+    echo $this->Html->script('/js/k9streetpoker.js');    
+    echo $this->fetch('script');
+    ?>
 </head>
 <body>
     <div class="navbar-wrapper">
@@ -109,12 +115,6 @@
           <?php echo $this->Session->flash();
                 echo $this->fetch('content'); ?>
     </div>
-    </div>
-    <?php
-    echo $this->Html->script('/js/Features/jquery-1.11.2.min.js');
-    echo $this->Html->script('/js/Features/bootstrap.min.js');
-    echo $this->Html->script('/js/k9streetpoker.js');
-    echo $this->fetch('script');
-    ?>
+    </div>    
 </body>
 </html>

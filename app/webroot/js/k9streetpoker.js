@@ -10,7 +10,7 @@ $(function () {
                 $("#searchTable").html(result);
             }
         );
-    });
+    });    
 });
 
 function pegarCaminhoArquivo()

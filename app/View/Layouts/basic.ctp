@@ -44,8 +44,9 @@
     </div>
   </div>
   <?php
-    echo $this->Html->script('//code.jquery.com/jquery-1.10.2.min.js');
-    echo $this->Html->script('bootstrap.min.js');
+    echo $this->Html->script('/js/Features/jquery-1.11.2.min.js');
+    echo $this->Html->script('/js/Features/bootstrap.min.js');
+    echo $this->Html->script('/js/k9streetpoker.js');
     echo $this->fetch('script');
   ?>
 </body>

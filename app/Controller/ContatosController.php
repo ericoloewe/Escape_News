@@ -20,7 +20,7 @@ class ContatosController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('save'); // Permitindo que os usuários se registrem
+        $this->Auth->allow('save','contato'); // Permitindo que os usuários se registrem
     }
 }
 
