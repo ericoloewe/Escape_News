@@ -43,7 +43,6 @@ class PagesController extends AppController {
  * @throws NotFoundException When the view file could not be found
  *	or MissingViewException in debug mode.
  */
-    public $name = 'Jogador';
 	public function display() {        
         $main_page = '/Pages/Main';        
         $this->render($main_page);

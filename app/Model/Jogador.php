@@ -5,6 +5,9 @@ App::uses('AuthComponent', 'Controller/Component');
 class Jogador extends AppModel {
     public $name = 'Jogador';
     public $useTable = 'jogadores';
+    public $hasMany = array(
+        'JogadorTorneio'
+    );
 
     public $validate = array(
         'nome' => array(

@@ -3,6 +3,9 @@
 class Torneio extends AppModel {
     public $name = 'Torneio';
     public $useTable = 'torneios';
+    public $hasMany = array(
+        'JogadorTorneio'
+    );
 
     public $validate = array(
         'nome' => array(

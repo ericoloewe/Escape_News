@@ -1,50 +1,51 @@
-var var_map;
-var var_location = new google.maps.LatLng(45.430817,12.331516);
+var map;
+var pointer = new google.maps.LatLng(-29.6932058,-51.2229969);
 	
-function map_init() {		 	
-			
-    var var_mapoptions = {
-        center: var_location,
-        zoom: 14,
+function map_init() {			
+    var mapoptions = {
+        center: pointer,
+        zoom: 16,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
-        mapTypeControl: false,
         panControl:false,
         rotateControl:false,
         streetViewControl: false
     };
-    var_map = new google.maps.Map(document.getElementById("map-container"),
-        var_mapoptions);
+    map = new google.maps.Map(document.getElementById("map-container"),
+        mapoptions);
       
     var contentString = 
 		'<div id="mapInfo">'+
-		'<p><strong>Peggy Guggenheim Collection</strong><br><br>'+
-		'Dorsoduro, 701-704<br>' +
-		'30123<br>Venezia<br>'+
-		'P: (+39) 041 240 5411</p>'+
-		'<a href="http://www.guggenheim.org/venice" target="_blank">Plan your visit</a>'+
+		'<p><strong>K9StreetPoker</strong><br>'+
+		'Rua Professor Miguel de Vargas, 285<br>'+
+        'Portao/RS - Brasil<br>'+
+		'P: +55 (51) 9834-0648</p>'+
+		'<a href="http://www.k9streetpoker.com/" target="_blank">Venha nos visitar</a>'+
 		'</div>';
  
-    var var_infowindow = new google.maps.InfoWindow({
+    var infowindow = new google.maps.InfoWindow({
     content: contentString
     });
           
-    var var_marker = new google.maps.Marker({
-    position: var_location,
-    map: var_map,
-    title:"Click for information about the Guggenheim museum in Venice",
-            maxWidth: 200,
+    var marker = new google.maps.Marker({
+    position: pointer,
+    map: map,
+    title:"Clique para obter informações sobre o K9",
+            maxWidth: 400,
             maxHeight: 200
     });
  
-    google.maps.event.addListener(var_marker, 'click', function() {
-        var_infowindow.open(var_map,var_marker);
+    google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent(contentString);
+        infowindow.open(map,marker);
     });
 }
  
     google.maps.event.addDomListener(window, 'load', map_init);
-      
-//start of modal google map
-$('#contato').on('shown.bs.modal', function () {
-    google.maps.event.trigger(var_map, "resize");
-    var_map.setCenter(var_location);
-});
+
+    $(function () {
+        //start of modal google map
+        $('#contato').on('shown.bs.modal', function () {
+            google.maps.event.trigger(map, "resize");
+            map.setCenter(pointer);
+        });
+    });

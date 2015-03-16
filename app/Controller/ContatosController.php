@@ -11,7 +11,7 @@ class ContatosController extends AppController {
         if ($this->request->is('post')) {
             if ($this->Contato->save($this->request->data)) {
                 $this->Session->setFlash("<script>alert('Sua mensagem foi salva com sucesso :)')</script>");
-                $this->redirect(array('action' => 'view'));
+                $this->redirect('/');
             } else {
                 $this->Session->setFlash("<script>alert('Sua mensagem não foi salva, tente novamente!')</script>");
             }

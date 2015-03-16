@@ -55,10 +55,14 @@ input[type="submit"]{
     margin-top: 10px;
 }
 
- #map-container {
+#map-container {
     padding: 0 0 0 0;
     max-width: 400px;
     max-height: 200px;
     width: 400px;
     height: 200px;
+}
+
+.modal-body{
+    margin-top: -31px;
 }

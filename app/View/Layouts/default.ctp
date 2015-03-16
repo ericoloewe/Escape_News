@@ -35,13 +35,7 @@
         echo $this->Html->css('/css/Pages/Main');
 		echo $this->fetch('meta');
 		echo $this->fetch('css');        
-	?>
-    <?php    
-    echo $this->Html->script('/js/Features/bootstrap.min.js');
-    echo $this->Html->script('/js/Features/jquery-2.1.3.min.js');
-    echo $this->Html->script('/js/k9streetpoker.js');    
-    echo $this->fetch('script');
-    ?>
+	?>    
 </head>
 <body>
     <div class="navbar-wrapper">
@@ -69,21 +63,21 @@
                                     </ul>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="Home.php?u=/Tournament/Tournament" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Torneios <span class="caret"></span></a>
+                                    <a href="/Torneios/view" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Torneios <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="Home.php?u=/Tournament/New">Novo</a></li>
+                                        <li><a href="/Torneios/novo">Novo</a></li>
                                         <li class="dropdown-submenu">
-                                            <a tabindex="-1" href="Home.php?u=/Tournament/Edit">Editar</a>
+                                            <a tabindex="-1" href="/Torneios/editar">Editar</a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="Home.php?u=/Tournament/EditTablePlayers">Tabela Jogadores</a></li>
-                                                <li><a href="Home.php?u=/Tournament/Edit">Torneios</a></li>
+                                                <li><a href="/Torneios/EditTablePlayers">Tabela Jogadores</a></li>
+                                                <li><a href="/Torneios/editar">Torneios</a></li>
                                             </ul>
                                         </li>
                                         <li class="dropdown-submenu">
-                                            <a tabindex="-1" href="Home.php?u=/Tournament/Tournament">Ver</a>
+                                            <a tabindex="-1" href="/Torneios/ver">Ver</a>
                                             <ul class="dropdown-menu">
                                                 <li><a href="Home.php?u=/Tournament/TablePlayers">Tabela Jogadores</a></li>
-                                                <li><a href="Home.php?u=/Tournament/Tournament">Torneios</a></li>
+                                                <li><a href="/Torneios/ver">Torneios</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -115,6 +109,12 @@
           <?php echo $this->Session->flash();
                 echo $this->fetch('content'); ?>
     </div>
-    </div>    
+    </div> 
+    <?php
+        echo $this->Html->script('/js/Features/jquery-2.1.3.min.js');    
+        echo $this->Html->script('/js/Features/bootstrap.min.js');        
+        echo $this->Html->script('/js/k9streetpoker.js');    
+        echo $this->fetch('script');
+    ?>
 </body>
 </html>
