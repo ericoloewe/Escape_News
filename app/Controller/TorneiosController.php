@@ -1,13 +1,21 @@
 <?php
 class TorneiosController extends AppController {
     public $name = 'Torneio';
-    var $scaffold;
+    
     public function ver($id=NULL)
     {
         if($id!=NULL)
-        {
-            $this->Torneio->id = $id;
-            $this->set('torneio', $this->Jogador->read());
+        {                   
+            $this->set('torneio', $this->Torneio->JogadorTorneio->findAllByTorneio_id($id));
+        }
+    }
+
+    public function gettorneios($name=NULL,$page=NULL,$type=NULL) {
+        if ($this->request->is('ajax')) {
+            $this->layout = "ajax";
+            $conditions = array("Torneio.{$type} LIKE" => "%{$name}%");
+            $this->set('page', $page);
+            $this->set('torneios', $this->Torneio->find('all', array('conditions' => $conditions)));
         }
     }
 

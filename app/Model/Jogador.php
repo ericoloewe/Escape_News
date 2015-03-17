@@ -6,7 +6,7 @@ class Jogador extends AppModel {
     public $name = 'Jogador';
     public $useTable = 'jogadores';
     public $hasMany = array(
-        'JogadorTorneio'
+        'JogadorTorneio' => array('foreignKey' => 'jogador_id')
     );
 
     public $validate = array(

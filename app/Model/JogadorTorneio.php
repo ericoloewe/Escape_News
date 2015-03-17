@@ -3,7 +3,15 @@ class JogadorTorneio extends AppModel {
     public $name = 'JogadorTorneio';
     public $useTable = 'jogadores_torneios';
     public $belongsTo = array(
-        'Jogador', 'Torneio'
+        'Jogador' => array(
+            'className' => 'Jogador',
+            'foreignKey' => 'id',
+            'conditions' => array()
+        ), 'Torneio' => array(
+            'className' => 'Torneio',
+            'foreignKey' => 'id',
+            'conditions' => array()      
+        )
     );
 
     public $validate = array(

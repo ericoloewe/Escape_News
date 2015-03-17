@@ -3,7 +3,7 @@ App::uses('File', 'Utility');
 
 class JogadoresController extends AppController {
     public $name = 'Jogador';
-    var $scaffold;
+    
     public function login() {
         $this->layout = 'basic';
         if ($this->request->is('post')) {
