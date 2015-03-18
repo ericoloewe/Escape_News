@@ -1,8 +1,6 @@
 <?php echo $this->Html->css('/css/Pages/Torneio/Ver'); 
       echo $this->Html->css('/css/Features/searchform_large');?>
 
-<!--<link type="text/css" rel="stylesheet" href="/Styles/Pages/Features/hover/hover.css">-->
-
 <?php if(!isset($torneio)): ?>
     <p id="actualpage" hidden><?php echo $this->request->params['action']; ?></p>
     <table id="sea">
@@ -33,7 +31,7 @@
         </tbody>
     </table>
 <?php else: ?>
-    <!--<p><?php echo print_r($torneio); ?></p>-->
+    <!--<p><?php /*echo print_r($torneio);*/ ?></p>-->
     <br>
     <table class="table">       
         <tr>

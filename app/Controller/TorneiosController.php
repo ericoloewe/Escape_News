@@ -23,8 +23,9 @@ class TorneiosController extends AppController {
         
     }
 
-    public function novo(){
-        
+    public function novo()
+    {
+        $this->set('jogadores', $this->Torneio->JogadorTorneio->Jogador->find("all"));
     }
 }
 ?>

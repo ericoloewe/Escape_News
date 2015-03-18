@@ -23,7 +23,14 @@ $(function () {
                 $("#searchTable").html(result);
             }
         );
-    });
+    }); 
+     $("#calendar").datepicker({
+                format: "dd/mm/yyyy",
+                todayBtn: "linked",
+                language: "pt-BR",
+                autoclose: true,
+                todayHighlight: true
+     });  
 });
 
 function pegarCaminhoArquivo()

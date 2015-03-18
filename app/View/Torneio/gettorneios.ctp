@@ -25,12 +25,12 @@ $(document).ready(function(){
 <ul id='stable'>
     <?php foreach ($torneios as $torneio): ?>
         <li>
-            <a href="/Torneios/<?php echo $page; ?>/<?php $torneio["Torneio"]["id"]; ?>">
+            <a href="/Torneios/<?php echo $page; ?>/<?php echo $torneio["Torneio"]["id"]; ?>">
                 <p>
-                    <?php $torneio["Torneio"]["id"]; ?>
+                    <?php echo $torneio["Torneio"]["nome"]; ?>
                 </p>
                 <p>
-                    <?php $torneio["Torneio"]["data"]; ?>
+                    R$ <?php echo $torneio["Torneio"]["cash"];?> - <?php echo $this->Time->format($torneio["Torneio"]["data"], '%d/%m/%Y'); ?>
                 </p>
                 <br>
             </a>
