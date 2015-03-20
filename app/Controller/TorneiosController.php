@@ -26,6 +26,17 @@ class TorneiosController extends AppController {
     public function novo()
     {
         $this->set('jogadores', $this->Torneio->JogadorTorneio->Jogador->find("all"));
+        if ($this->request->is('post')) { 
+            $user = $this->Torneio->saveAll($this->request->data);
+            $this->request->data['JogadorTorneio']['torneio_id'] = $this->Torneio->id;
+            if ($this->Torneio->JogadorTorneio->save($this->request->data)) {
+                $this->Session->setFlash("<script>alert('Torneio Cadastrado Com Sucesso :)')</script>");
+                $this->redirect(array('action' => 'novo'));
+                //Debugger::dump($this->request->data);
+            } else {
+                $this->Session->setFlash("<script>alert('Erro ao Cadastrar Novo Torneio!')</script>");
+            }
+        }
     }
 }
 ?>

@@ -15,13 +15,13 @@ class JogadorTorneio extends AppModel {
     );
 
     public $validate = array(
-        'jogador' => array(
+        'jogador_id' => array(
             'required' => array(
                 'rule' => array('notEmpty'),
                 'message' => 'A Name is required'
             )
         ),                
-        'torneio' => array(
+        'torneio_id' => array(
             'required' => array(
                 'rule' => array('notEmpty'),
                 'message' => 'A email is required'

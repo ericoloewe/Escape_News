@@ -41,7 +41,7 @@
         <div class="col-sm-10">
             <?php echo $this->Form->input(
                     'phone',
-                    array('label' => array('class' => 'sr-only'),'class'=>'form-control','placeholder' => '(DDD)-XXXXXXXX')
+                    array('label' => array('class' => 'sr-only'),'class'=>'form-control','placeholder' => '(DDD)-XXXXXXXX','maxlength'=>'14',"onkeypress"=>"mascaraPhone(this)")
                 ); ?>
         </div>
     </div>

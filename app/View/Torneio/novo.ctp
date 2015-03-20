@@ -7,13 +7,12 @@
       echo $this->Html->script('/js/Features/bootstrap-datepicker.js');
       echo $this->Html->script('/js/Features/bootstrap-datepicker.pt-BR.js');
 ?>
-
 <?php echo $this->Form->create('Torneio', array('url' => array('controller' => 'torneios','action' => 'novo'),'class' => 'form-horizontal','role' => 'form')); ?>
     <div class="form-group">
         <label class="col-sm-2 control-label">Nome:*</label>
         <div class="col-sm-10">            
             <?php echo $this->Form->input(
-                'nome',
+                'Torneio.nome',
                 array('label' => array('class' => 'sr-only'),'class'=>'form-control','placeholder' => 'Insira o Nome do Torneio Completo')
             ); ?>
         </div>
@@ -22,19 +21,20 @@
         <label class="col-sm-2 control-label">Data:*</label>
         <div class="span5 col-sm-10">
             <div class="input-group date" id="calendar">                
-                <?php echo $this->Form->input(
-                    'date',
-                    array('label' => array('class' => 'sr-only'),'class'=>'form-control','placeholder' => 'DD/MM/AAAA')
-                ); ?>
-                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                <input id="inputDataTorneio" class="form-control" placeholder="DD/MM/AAAA" onkeypress="mascaraData(this)" maxlength="10" type="text"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>           
             </div>
+            <?php echo $this->Form->input(
+                    'Torneio.data',
+                    array('hidden'=>'','label' => array('class' => 'sr-only'),'type' => 'text','maxlength'=>'10')
+                ); ?>
+                
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-2 control-label">CASH:*</label>
         <div class="col-sm-10">
             <?php echo $this->Form->input(
-                'cash',
+                'Torneio.cash',
                 array('label' => array('class' => 'sr-only'),'class'=>'form-control','placeholder' => 'R$')
             ); ?>
         </div>
@@ -51,14 +51,38 @@
                     <th>BankHall</th>
                 </tr>
             </thead>
-            <tbody>                    
-                {PLAYERS}
+            <tbody>
+                <?php foreach($jogadores as $jogador):?>                    
+                <tr>
+                    <td>
+                        <div class='checkbox'>
+                            <?php echo $this->Form->checkbox('JogadorTorneio..jogador_id', array('value' => $jogador["Jogador"]["id"],'hiddenField' => false)); ?>
+                        </div>
+                    </td>
+                    <td>
+                        <a onmouseover='turnOn(<?php echo $jogador['Jogador']['id']; ?>)' onmouseout='turnOff(<?php echo $jogador['Jogador']['id']; ?>)' href='/jogadores/ver/<?php echo $jogador['Jogador']['id']; ?>'>
+                            <?php echo $jogador['Jogador']['nome']; ?>
+                        </a>
+                        <b id="<?php echo $jogador['Jogador']['id']; ?>" class='button bubble-top'><img class='img-rounded' style='float: left; width: 50px; height: 50px;' src='/app/webroot/img/pics/<?php echo $jogador['Jogador']['id']; ?>.jpg'/></b></td>
+                    <td>
+                        <a href='mailto:<?php echo $jogador['Jogador']['email']; ?>'>
+                            <?php echo $jogador['Jogador']['email']; ?>
+                        </a>
+                    </td>
+                    <td>
+                        <?php echo $jogador['Jogador']['phone']; ?>
+                    </td>
+                    <td>
+                        <?php echo $jogador['Jogador']['bankhall']; ?>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
     <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default btn-lg btn-block">Registrar</button>
+        <div class="col-sm-offset-2 col-sm-10">            
+            <?php echo $this->Form->end(array('label' => 'Registrar','class' => 'btn btn-default btn-lg btn-block'));?>
         </div>
     </div>
 </form>
