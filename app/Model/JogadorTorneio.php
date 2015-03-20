@@ -6,11 +6,10 @@ class JogadorTorneio extends AppModel {
         'Jogador' => array(
             'className' => 'Jogador',
             'foreignKey' => 'id',
-            'conditions' => array()
+            'order' => array('Jogador.nome' => 'ASC')
         ), 'Torneio' => array(
             'className' => 'Torneio',
-            'foreignKey' => 'id',
-            'conditions' => array()      
+            'foreignKey' => 'id'   
         )
     );
 

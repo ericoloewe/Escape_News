@@ -16,13 +16,12 @@ $(document).ready(function(){
 </script>
 
 <?php else: ?>
-
-<ul id='stable'>
-    <script>
+<script>
     $(document).ready(function(){
         $('#sea').addClass('form-group has-success');
     });
-    </script>
+</script>
+<ul id='stable'>    
     <?php foreach ($jogadores as $jogador): ?>
         <li>
             <a href="/jogadores/<?php echo $page."/".$jogador["Jogador"]["id"]; ?>">

@@ -3,8 +3,19 @@
 class Torneio extends AppModel {
     public $name = 'Torneio';
     public $useTable = 'torneios';
-    public $hasMany = array(
+    /*public $hasMany = array(
         'JogadorTorneio'
+    );*/
+
+    public $recursive = 2;
+    public $hasAndBelongsToMany = array(
+        'Jogador' =>
+            array(
+                'className' => 'Jogador',
+                'joinTable' => 'jogadores_torneios',
+                'foreignKey' => 'torneio_id',
+                'associationForeignKey' => 'jogador_id'                
+            )
     );
 
     public $validate = array(

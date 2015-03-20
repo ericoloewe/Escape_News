@@ -5,8 +5,14 @@ class TorneiosController extends AppController {
     public function ver($id=NULL)
     {
         if($id!=NULL)
-        {                   
-            $this->set('torneio', $this->Torneio->JogadorTorneio->findAllByTorneio_id($id));
+        {
+            $institutes = $this->Torneio->find('all', array(
+                'conditions' => array(
+                    'Torneio.id' => $id
+                )
+            ));
+            $this->set('torneio', $institutes);
+            //Debugger::dump($institutes);
         }
     }
 

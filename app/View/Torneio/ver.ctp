@@ -50,12 +50,12 @@
             <td>Participantes:</td>
             <td><i class="glyphicon glyphicon-list-alt"></i>
                 <dl class='players'>
-                    <?php foreach ($torneio as $jogador): ?>                
-                        <dt onmouseover="turnOn(<?php echo $jogador['Jogador']['id']; ?>)" onmouseout="turnOff(<?php echo $jogador['Jogador']['id']; ?>)"><?php echo $jogador['Jogador']["nome"]; ?></dt>
-                        <dd id="<?php echo $jogador['Jogador']['id']; ?>" class='button bubble-top'>
-                            <a><img class='img-rounded' style='float: left; width: 50px; height: 50px;' src='/app/webroot/img/pics/<?php echo $jogador['Jogador']['id']; ?>.jpg'/>
-                                <p>Nome:</p><p><?php echo $jogador['Jogador']['nome']; ?></p>
-                                <p>BankHall: <?php echo $jogador['Jogador']['bankhall']; ?></p>
+                    <?php foreach ($torneio[0]['Jogador'] as $jogador): ?>                
+                        <dt onmouseover="turnOn(<?php echo $jogador['id']; ?>)" onmouseout="turnOff(<?php echo $jogador['id']; ?>)"><?php echo $jogador["nome"]; ?></dt>
+                        <dd id="<?php echo $jogador['id']; ?>" class='button bubble-top'>
+                            <a><img class='img-rounded' style='float: left; width: 50px; height: 50px;' src='/app/webroot/img/pics/<?php echo $jogador['id']; ?>.jpg'/>
+                                <p>Nome:</p><p><?php echo $jogador['nome']; ?></p>
+                                <p>BankHall: <?php echo $jogador['bankhall']; ?></p>
                                 <br>
                             </a>
                         </dd>
