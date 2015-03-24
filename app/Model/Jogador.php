@@ -5,9 +5,9 @@ App::uses('AuthComponent', 'Controller/Component');
 class Jogador extends AppModel {
     public $name = 'Jogador';
     public $useTable = 'jogadores';
-    /*public $hasMany = array(
+    public $hasMany = array(
         'JogadorTorneio' => array('foreignKey' => 'jogador_id')
-    );*/
+    );
 
     public $recursive = 2;
     public $hasAndBelongsToMany = array(

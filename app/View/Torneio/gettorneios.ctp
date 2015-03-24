@@ -9,7 +9,7 @@
 <?php if(empty($torneios)): ?>
 
 <script>
-$(document).ready(function(){
+$(document).ready(function() {
     $('#sea').addClass('form-group has-error');
     $('#sea').append("<span id='sear' class='glyphicon glyphicon-remove form-control-feedback' aria-hidden='true'></span>");
     });
@@ -22,6 +22,7 @@ $(document).ready(function(){
         $('#sea').addClass('form-group has-success');
     });
 </script>
+
 <ul id='stable'>
     <?php foreach ($torneios as $torneio): ?>
         <li>

@@ -35,7 +35,7 @@ $(function () {
         data = $(this).val().split("/");
         var date = new Date(data[2], data[1], data[0]);
         $("#TorneioData").val(date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate());
-    });
+    });    
 });
 
 function mascaraPhone(telefone){ 

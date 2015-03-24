@@ -33,12 +33,16 @@
         echo $this->Html->css('default');
         echo $this->Html->css(array('/css/Features/bootstrap-theme.min','/css/Features/bootstrap.min'));
         echo $this->Html->css('/css/Pages/Main');
+        echo $this->Html->css('/css/Features/dataTables.bootstrap.css');
+        echo $this->Html->css('/css/Features/datepicker3.css');
 		echo $this->fetch('meta');
 		echo $this->fetch('css');        
 	?>
     <?php
         echo $this->Html->script('/js/Features/jquery-2.1.3.min.js');    
-        echo $this->Html->script('/js/Features/bootstrap.min.js');        
+        echo $this->Html->script('/js/Features/bootstrap.min.js');
+        echo $this->Html->script('/js/Features/bootstrap-datepicker.js');
+        echo $this->Html->script('/js/Features/bootstrap-datepicker.pt-BR.js');        
         echo $this->Html->script('/js/k9streetpoker.js');    
         echo $this->fetch('script');
     ?>

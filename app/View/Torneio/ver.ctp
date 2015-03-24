@@ -10,10 +10,10 @@
                     <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
                 </td>
                 <td>
-                    <input id="inametournament" class="form-control" type="search" placeholder="Buscar" autocomplete="off">
+                    <input id="inametournament" class="form-control" type="search" placeholder="Buscar" autocomplete="off" autofocus="true">
                 </td>
                 <td>
-                    <select id="type" class="form-control" autofocus>
+                    <select id="type" class="form-control">
                         <option value="nome">Nome</option>
                         <option value="data">Data</option>
                         <option value="cash">Cash</option>
@@ -31,7 +31,7 @@
         </tbody>
     </table>
 <?php else: ?>
-    <!--<p><?php /*echo print_r($torneio);*/ ?></p>-->
+    <!--<pre><?php /*echo print_r($torneio);*/ ?></pre>-->
     <br>
     <table class="table">       
         <tr>

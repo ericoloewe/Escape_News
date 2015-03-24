@@ -1,11 +1,7 @@
 <?php echo $this->Html->css('/css/Pages/Torneio/Novo');      
-      echo $this->Html->css('/css/Features/jquery.dataTables.min');
-      echo $this->Html->css('/css/Features/dataTables.bootstrap.css');
-      echo $this->Html->css('/css/Features/datepicker3.css');
+      echo $this->Html->css('/css/Features/jquery.dataTables.min');      
       echo $this->Html->script('/js/Features/jquery.dataTables.min.js');
-      echo $this->Html->script('/js/Features/dataTables.bootstrap.js');
-      echo $this->Html->script('/js/Features/bootstrap-datepicker.js');
-      echo $this->Html->script('/js/Features/bootstrap-datepicker.pt-BR.js');
+      echo $this->Html->script('/js/Features/dataTables.bootstrap.js');      
 ?>
 <?php echo $this->Form->create('Torneio', array('url' => array('controller' => 'torneios','action' => 'novo'),'class' => 'form-horizontal','role' => 'form')); ?>
     <div class="form-group">

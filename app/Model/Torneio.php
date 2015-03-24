@@ -3,9 +3,9 @@
 class Torneio extends AppModel {
     public $name = 'Torneio';
     public $useTable = 'torneios';
-    /*public $hasMany = array(
+    public $hasMany = array(
         'JogadorTorneio'
-    );*/
+    );
 
     public $recursive = 2;
     public $hasAndBelongsToMany = array(
