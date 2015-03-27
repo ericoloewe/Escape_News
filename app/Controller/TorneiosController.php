@@ -24,10 +24,48 @@ class TorneiosController extends AppController {
         }
     }
 
+    public function addJogadorTorneio() {
+        if ($this->request->is('ajax')) {
+            $idjogador = $this->request->data('idjogador');
+            $idtorneio = $this->request->data('idtorneio');
+            $this->layout = "ajax";
+            $this->Torneio->JogadorTorneio->save(array('JogadorTorneio'=>array('jogador_id' => $idjogador,'torneio_id' => $idtorneio)));              
+        }
+    }
+
+    public function delJogadorTorneio() {
+        if ($this->request->is('ajax')) {
+            $idjogador = $this->request->data('idjogador');
+            $idtorneio = $this->request->data('idtorneio');
+            $this->layout = "ajax";            
+            $id = $this->Torneio->JogadorTorneio->find('first', array(
+                'conditions' => array(
+                    'AND' => array(
+                        'JogadorTorneio.jogador_id' => $idjogador,
+                        'JogadorTorneio.torneio_id' => $idtorneio
+                    )
+                )
+            ));
+            $this->Torneio->JogadorTorneio->delete($id["JogadorTorneio"]["id"]);         
+        }
+    }
+
+    public function delete($id) {
+        if (!$this->request->is('post')) {
+            throw new MethodNotAllowedException();
+        }
+        if ($this->Torneio->JogadorTorneio->deleteAll(array("JogadorTorneio.torneio_id"=>$id),false)) {
+            if ($this->Torneio->delete($id)) {          
+                $this->Session->setFlash("<script>alert('O Torneio com id: {$id} foi deletado com sucesso!')</script>");
+                $this->redirect('/');
+            }
+        }
+    }
+
     public function editar($id=NULL)
     {
         if($id!=NULL)
-        {
+        {            
             $this->Torneio->id = $id;
             $this->set('torneio', $this->Torneio->read());
             $this->set('jogadoresForadoTorneio', $this->jogadoresForadoTorneio($id));
@@ -35,19 +73,20 @@ class TorneiosController extends AppController {
                   $this->request->data = $this->Torneio->read();
             } else {                
                 $this->request->data['JogadorTorneio']['torneio_id'] = $id;
-                if ($this->Torneio->JogadorTorneio->save($this->request->data)) {
+                if ($this->Torneio->save($this->request->data)) {
                     $this->Session->setFlash("<script>alert('Torneio Atualizado Com Sucesso :)')</script>");
-                    //$this->redirect(array('action' => 'ver',$id));
+                    $this->redirect(array('action' => 'ver',$id));
                 } else {
                     $this->Session->setFlash("<script>alert('Erro ao Atualizar Novo Torneio!')</script>");
                 }
-                Debugger::dump($this->request->data);
+                //Debugger::dump($this->request->data);
             }
         }
     }
 
     private function jogadoresForadoTorneio($id)
     {
+        $jogadoresForadoTorneio = NULL;
         $jogadores = $this->Torneio->Jogador->find('all');
         $this->Torneio->id = $id;
         $jogadoresTorneio = $this->Torneio->read();

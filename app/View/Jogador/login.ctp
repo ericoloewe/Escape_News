@@ -100,7 +100,7 @@
     echo $this->Session->flash('auth');
     echo $this->Form->create('Jogador', array('url' => array('controller' => 'jogadores','action' => 'login'),'class' => 'form-signin'));
 ?>
-    <h2>K9StreetPoker</h2>
+    <h2>K9 Street Poker</h2>
 <?php
     echo $this->Form->input(
         'email',

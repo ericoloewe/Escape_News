@@ -1,5 +1,5 @@
 body {
-    font-family: 'Lucida Grande', Tahoma, Verdana, sans-serif,FontCard;
+    font-family: 'Sanchez','Lucida Grande', Tahoma, Verdana, sans-serif,FontCard;
     transition: margin 120ms linear;
     color:#4e4e4e;
     background: url("/app/webroot/img/Main_background.jpg") no-repeat center center fixed;

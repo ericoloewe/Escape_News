@@ -46,6 +46,7 @@
         echo $this->Html->script('/js/k9streetpoker.js');    
         echo $this->fetch('script');
     ?>
+    <link href='http://fonts.googleapis.com/css?family=Sanchez' rel='stylesheet' type='text/css'>
 </head>
 <body>
     <div class="navbar-wrapper">

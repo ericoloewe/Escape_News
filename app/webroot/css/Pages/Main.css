@@ -1,5 +1,6 @@
 body {
-    padding-top: 50px;
+    padding-top: 50px;    
+    font-family: 'Sanchez','Lucida Grande', Tahoma, Verdana, sans-serif,FontCard;
 }
 
 .container .content{
@@ -16,7 +17,7 @@ footer{
 }
 
 .navbar-brand{
-    font-weight: bold;
+    font-weight: bold;    
 }
 
 .form-control{

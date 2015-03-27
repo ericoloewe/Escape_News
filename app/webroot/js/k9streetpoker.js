@@ -46,7 +46,23 @@ function mascaraPhone(telefone){
  
  if(telefone.value.length == 9)
      telefone.value = telefone.value + '-'; //quando o campo já tiver 8 caracteres, o script irá inserir um tracinho, para melhor visualização do telefone.
-  
+}
+
+function addJogadorTorneio(element,idjog,idtor)
+{
+    if ($(element).is(':checked')) {
+        $.ajax({
+            type: "POST",
+            data: { idjogador: idjog, idtorneio: idtor },
+            url: "/torneios/addJogadorTorneio/"
+        });
+    } else {
+        $.ajax({
+            type: "POST",
+            data: { idjogador: idjog, idtorneio: idtor },
+            url: "/torneios/delJogadorTorneio/"            
+        });
+    }
 }
 
 function mascaraData(data){ 

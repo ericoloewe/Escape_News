@@ -32,6 +32,7 @@ class JogadoresController extends AppController {
             $this->set('jogador', $this->Jogador->read('id'));        
             if ($this->request->is('get')) {
                 $this->request->data = $this->Jogador->read();
+                Debugger::dump($this->request->data);
             } else {
                 if ($this->Jogador->save($this->request->data)) {
                     if($_FILES['pic']['error']!=4&&isset($_FILES['pic'])) {                       

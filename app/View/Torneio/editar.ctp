@@ -37,7 +37,20 @@
 
 <?php else: ?>
 
+    <div id="deletarJogador" class="label label-danger">
+        <?php echo $this->Form->postLink(
+                "",
+                array('action' => 'delete', $torneio['Torneio']['id']),
+                array('confirm' => 'Are you sure?','class'=>'glyphicon glyphicon-remove')
+            ); ?>
+    </div>
+
     <?php echo $this->Form->create('Torneio', array('url' => array('controller' => 'torneios','action' => 'editar'),'class' => 'form-horizontal','role' => 'form')); ?>
+    <div class="form-group">        
+        <div class="col-sm-10">
+            <?php echo $this->Form->input('id', array('type' => 'hidden')); ?>
+        </div>
+    </div>
     <div class="form-group">
         <label class="col-sm-2 control-label">Nome:*</label>
         <div class="col-sm-10">            
@@ -82,36 +95,37 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($jogadoresForadoTorneio as $jogador):?>                    
-                <tr>
-                    <td>
-                        <div class='checkbox'>
-                            <?php echo $this->Form->checkbox('JogadorTorneio..jogador_id', array('value' => $jogador["id"],'hiddenField' => false)); ?>
-                        </div>
-                    </td>
-                    <td>
-                        <a onmouseover='turnOn(<?php echo $jogador['id']; ?>)' onmouseout='turnOff(<?php echo $jogador['id']; ?>)' href='/jogadores/ver/<?php echo $jogador['id']; ?>'>
-                            <?php echo $jogador['nome']; ?>
-                        </a>
-                        <b id="<?php echo $jogador['id']; ?>" class='button bubble-top'><img class='img-rounded' style='float: left; width: 50px; height: 50px;' src='/app/webroot/img/pics/<?php echo $jogador['id']; ?>.jpg'/></b></td>
-                    <td>
-                        <a href='mailto:<?php echo $jogador['email']; ?>'>
-                            <?php echo $jogador['email']; ?>
-                        </a>
-                    </td>
-                    <td>
-                        <?php echo $jogador['phone']; ?>
-                    </td>
-                    <td>
-                        <?php echo $jogador['bankhall']; ?>
-                    </td>
-                </tr>
+                <?php if(isset($jogadoresForadoTorneio))
+                        foreach($jogadoresForadoTorneio as $jogador):?>
+                        <tr>
+                            <td>
+                                <div class='checkbox'>
+                                    <?php echo $this->Form->checkbox('JogadorTorneio..jogador_id', array('value' => $jogador["id"],'hiddenField' => false,'onchange'=>"addJogadorTorneio(this,'{$jogador['id']}','{$torneio['Torneio']['id']}')")); ?>
+                                </div>
+                            </td>
+                            <td>
+                                <a onmouseover='turnOn(<?php echo $jogador['id']; ?>)' onmouseout='turnOff(<?php echo $jogador['id']; ?>)' href='/jogadores/ver/<?php echo $jogador['id']; ?>'>
+                                    <?php echo $jogador['nome']; ?>
+                                </a>
+                                <b id="<?php echo $jogador['id']; ?>" class='button bubble-top'><img class='img-rounded' style='float: left; width: 50px; height: 50px;' src='/app/webroot/img/pics/<?php echo $jogador['id']; ?>.jpg'/></b></td>
+                            <td>
+                                <a href='mailto:<?php echo $jogador['email']; ?>'>
+                                    <?php echo $jogador['email']; ?>
+                                </a>
+                            </td>
+                            <td>
+                                <?php echo $jogador['phone']; ?>
+                            </td>
+                            <td>
+                                <?php echo $jogador['bankhall']; ?>
+                            </td>
+                        </tr>
                 <?php endforeach; ?>
                 <?php foreach($torneio["Jogador"] as $jogador):?>                    
-                <tr>
+                <tr>                    
                     <td>
                         <div class='checkbox'>
-                            <?php echo $this->Form->checkbox('JogadorTorneio..jogador_id', array('value' => $jogador["id"],'hiddenField' => false,'checked')); ?>
+                            <?php echo $this->Form->checkbox('JogadorTorneio..jogador_id', array('value' => $jogador["id"],'hiddenField' => false,'onchange'=>"addJogadorTorneio(this,'{$jogador['id']}','{$torneio['Torneio']['id']}')",'checked')); ?>
                         </div>
                     </td>
                     <td>
@@ -141,6 +155,7 @@
         </div>
     </div>
 </form>
+<div id="teste"></div>
 <script>
     $(document).ready(function() {
         $('#playerstable').DataTable({
