@@ -15,11 +15,12 @@ class TorneiosController extends AppController {
         }
     }
 
-    public function gettorneios($name=NULL,$page=NULL,$type=NULL) {
+    public function gettorneios($name=NULL,$page=NULL,$type=NULL,$controller='Torneios') {
         if ($this->request->is('ajax')) {
             $this->layout = "ajax";
             $conditions = array("Torneio.{$type} LIKE" => "%{$name}%");
             $this->set('page', $page);
+            $this->set('controller', $controller);
             $this->set('torneios', $this->Torneio->find('all', array('conditions' => $conditions)));
         }
     }

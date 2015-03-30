@@ -26,7 +26,7 @@ $(document).ready(function() {
 <ul id='stable'>
     <?php foreach ($torneios as $torneio): ?>
         <li>
-            <a href="/Torneios/<?php echo $page; ?>/<?php echo $torneio["Torneio"]["id"]; ?>">
+            <a href="/<?php echo $controller; ?>/<?php echo $page; ?>/<?php echo $torneio["Torneio"]["id"]; ?>">
                 <p>
                     <?php echo $torneio["Torneio"]["nome"]; ?>
                 </p>

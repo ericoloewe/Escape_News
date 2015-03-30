@@ -3,6 +3,7 @@
 
 <?php if(!isset($torneio)): ?>
     <p id="actualpage" hidden><?php echo $this->request->params['action']; ?></p>
+    <p id="actualcontroller" hidden><?php echo $this->request->params['controller']; ?></p>
     <table id="sea">
         <tbody>
             <tr>

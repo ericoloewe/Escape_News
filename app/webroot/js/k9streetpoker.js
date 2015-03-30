@@ -13,11 +13,12 @@ $(function () {
     });
     $("#inametournament").keyup(function () {
         var name = $("#inametournament").val();
-        var page = $("#actualpage").text();
+        var page = $("#actualaction").text();
+        var controller = $("#actualcontroller").text();
         var type = $("#type").val();
 
         $.get(
-            "/torneios/gettorneios/" + name + "/" + page + "/" + type,
+            "/torneios/gettorneios/" + name + "/" + page + "/" + type + "/" + controller,
             null,
             function (result) {
                 $("#searchTable").html(result);
@@ -35,7 +36,7 @@ $(function () {
         data = $(this).val().split("/");
         var date = new Date(data[2], data[1], data[0]);
         $("#TorneioData").val(date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate());
-    });    
+    });
 });
 
 function mascaraPhone(telefone){ 

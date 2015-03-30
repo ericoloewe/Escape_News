@@ -80,14 +80,14 @@
                                         <li class="dropdown-submenu">
                                             <a tabindex="-1" href="/Torneios/editar">Editar</a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="/Torneios/EditTablePlayers">Tabela Jogadores</a></li>
+                                                <li><a href="/TabelaJogadores/Editar">Tabela Jogadores</a></li>
                                                 <li><a href="/Torneios/editar">Torneios</a></li>
                                             </ul>
                                         </li>
                                         <li class="dropdown-submenu">
                                             <a tabindex="-1" href="/Torneios/ver">Ver</a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="Home.php?u=/Tournament/TablePlayers">Tabela Jogadores</a></li>
+                                                <li><a href="/JogadoresTorneios/verTabelaJogadores">Tabela Jogadores</a></li>
                                                 <li><a href="/Torneios/ver">Torneios</a></li>
                                             </ul>
                                         </li>
@@ -96,8 +96,8 @@
                                 <li class="dropdown">
                                     <a href="Home.php?u=/Users/Users" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Espaço K9<span class="caret"></span></a>
                                     <ul  class="dropdown-menu" role="menu">
-                                        <li><a href="Home.php?u=/EspacoK9/Forum/Forum">Forum</a></li>
-                                        <li><a href="Home.php?u=/EspacoK9/JogoAgora/JogoAgora">Jogo Agora</a></li>
+                                        <li><a href="/Forum/Ver">Forum</a></li>
+                                        <li><a href="/JogoAgora/Ver">Jogo Agora</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="/Contatos/View/">Contato</a></li>
