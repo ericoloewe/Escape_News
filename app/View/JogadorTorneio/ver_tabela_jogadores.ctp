@@ -41,25 +41,60 @@
     <table id="table-Players" class="table table-striped table-bordered" cellspacing="0" width="100%" style="margin-top: 5px;">
         <thead>
             <tr>
-                <th rowspan="2">Posição</th>
                 <th rowspan="2">Nome</th>
-                <th colspan="{bsecion}" style="border-bottom-color: #fff;">Pontuação</th>
+                <th colspan="<?php echo $secoes[0]["secao"]; ?>" style="border-bottom-color: #fff;">Pontuação</th>
                 <th rowspan="2">Total</th>
-                <th rowspan="2">Nivel</th>
+                <th rowspan="2">Posição</th>
             </tr>
             <tr>
-                {tabSections}
+                <?php for($i=1;$i<=$secoes[0]["secao"];$i++): ?>
+                    <?php if($i==$secoes[0]["secao"]): ?>
+                        <th id='end'>Secao <?php echo $i; ?></th>
+                    <?php else: ?>
+                        <th>Secao <?php echo $i; ?></th>
+                    <?php endif; ?>
+                <?php endfor; ?>
             </tr>
         </thead>
  
         <tbody>
-            {tableBody}
+            <?php $i=1;
+                  $tamanho = count($torneio);                  
+ ?>
+            <?php foreach($torneio as $jogador): ?>
+                <?php if($i!=$tamanho): ?>                
+                    <tr>                        
+                        <td>
+                            <a href="/jogadores/ver/<?php echo $jogador["Jogador"]['id']; ?>">
+                                <dl class='players'>                                         
+                                    <dt onmouseover="turnOn(<?php echo $jogador["Jogador"]['id']; ?>)" onmouseout="turnOff(<?php echo $jogador["Jogador"]['id']; ?>)"><?php echo $jogador["Jogador"]["nome"]; ?></dt>
+                                        <dd id="<?php echo $jogador["Jogador"]['id']; ?>" class='button bubble-top'>
+                                            <a><img class='img-rounded' style='float: left; width: 50px; height: 50px;' src='/app/webroot/img/pics/<?php echo $jogador["Jogador"]['id']; ?>.jpg'/>
+                                                <p>Nome:</p><p><?php echo $jogador["Jogador"]['nome']; ?></p>
+                                                <p>BankHall: <?php echo $jogador["Jogador"]['bankhall']; ?></p>
+                                                <br>
+                                            </a>
+                                        </dd>                                        
+                                 </dl>
+                             </a>
+                        </td>
+                        <?php for($j=1;$j<=$secoes[0]["secao"];$j++)
+                        {                            
+                            echo "<td>".$jogador["JogadorTorneio"]["secao"][$j]."</td>";
+                        } ?>
+                        <td><?php echo $jogador[0]['total']; ?></td>
+                        <td><?php echo $this->Link->getPosicaoJogador($i,$tamanho-1); ?></td>
+                    </tr>
+                <?php $i++; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
         </tbody>
     </table>
     <script>
         $(document).ready(function() {
             $('#table-Players').DataTable(
             {
+                "order": [[ 3 ]],
                 "language": {
                     "sEmptyTable": "Nenhum registro encontrado",
                     "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",

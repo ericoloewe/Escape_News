@@ -6,7 +6,7 @@
 ?>
 
 <?php if(!isset($torneio)): ?>
-    <p id="actualpage" hidden><?php echo $this->request->params['action']; ?></p>
+    <p id="actualaction" hidden><?php echo $this->request->params['action']; ?></p>
     <p id="actualcontroller" hidden><?php echo $this->request->params['controller']; ?></p>
     <table id="sea">
         <tbody>
@@ -95,9 +95,9 @@
                     <th>BankHall</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody>                
                 <?php if(isset($jogadoresForadoTorneio))
-                        foreach($jogadoresForadoTorneio as $jogador):?>
+                        foreach($jogadoresForadoTorneio as $jogador):?> 
                         <tr>
                             <td>
                                 <div class='checkbox'>
@@ -120,9 +120,10 @@
                             <td>
                                 <?php echo $jogador['bankhall']; ?>
                             </td>
-                        </tr>
+                        </tr>                    
                 <?php endforeach; ?>
-                <?php foreach($torneio["Jogador"] as $jogador):?>                    
+                <?php foreach($torneio["Jogador"] as $jogador):?>      
+                    <?php if($jogador["JogadoresTorneio"]["secao"]==1): ?>                 
                 <tr>                    
                     <td>
                         <div class='checkbox'>
@@ -146,6 +147,7 @@
                         <?php echo $jogador['bankhall']; ?>
                     </td>
                 </tr>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </tbody>
         </table>

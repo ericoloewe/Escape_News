@@ -2,7 +2,7 @@
       echo $this->Html->css('/css/Features/searchform_large');?>
 
 <?php if(!isset($torneio)): ?>
-    <p id="actualpage" hidden><?php echo $this->request->params['action']; ?></p>
+    <p id="actualaction" hidden><?php echo $this->request->params['action']; ?></p>
     <p id="actualcontroller" hidden><?php echo $this->request->params['controller']; ?></p>
     <table id="sea">
         <tbody>
@@ -32,7 +32,6 @@
         </tbody>
     </table>
 <?php else: ?>
-    <!--<pre><?php /*echo print_r($torneio);*/ ?></pre>-->
     <br>
     <table class="table">       
         <tr>
@@ -51,15 +50,17 @@
             <td>Participantes:</td>
             <td><i class="glyphicon glyphicon-list-alt"></i>
                 <dl class='players'>
-                    <?php foreach ($torneio[0]['Jogador'] as $jogador): ?>                
-                        <dt onmouseover="turnOn(<?php echo $jogador['id']; ?>)" onmouseout="turnOff(<?php echo $jogador['id']; ?>)"><?php echo $jogador["nome"]; ?></dt>
-                        <dd id="<?php echo $jogador['id']; ?>" class='button bubble-top'>
-                            <a><img class='img-rounded' style='float: left; width: 50px; height: 50px;' src='/app/webroot/img/pics/<?php echo $jogador['id']; ?>.jpg'/>
-                                <p>Nome:</p><p><?php echo $jogador['nome']; ?></p>
-                                <p>BankHall: <?php echo $jogador['bankhall']; ?></p>
-                                <br>
-                            </a>
-                        </dd>
+                    <?php foreach ($torneio[0]['Jogador'] as $jogador): ?>                                      
+                        <?php if($jogador["JogadoresTorneio"]["secao"]==1): ?>   
+                            <dt onmouseover="turnOn(<?php echo $jogador['id']; ?>)" onmouseout="turnOff(<?php echo $jogador['id']; ?>)"><a href="/jogadores/ver/<?php echo $jogador['id']; ?>"><?php echo $jogador["nome"]; ?></a></dt>
+                            <dd id="<?php echo $jogador['id']; ?>" class='button bubble-top'>
+                                <a><img class='img-rounded' style='float: left; width: 50px; height: 50px;' src='/app/webroot/img/pics/<?php echo $jogador['id']; ?>.jpg'/>
+                                    <p>Nome:</p><p><?php echo $jogador['nome']; ?></p>
+                                    <p>BankHall: <?php echo $jogador['bankhall']; ?></p>
+                                    <br>
+                                </a>
+                            </dd>
+                        <?php endif; ?>
                     <?php endforeach; ?>             
                 </dl>
             </td>

@@ -5,11 +5,11 @@ class JogadorTorneio extends AppModel {
     public $belongsTo = array(
         'Jogador' => array(
             'className' => 'Jogador',
-            'foreignKey' => 'id',
+            'foreignKey' => 'jogador_id',
             'order' => array('Jogador.nome' => 'ASC')
         ), 'Torneio' => array(
             'className' => 'Torneio',
-            'foreignKey' => 'id'   
+            'foreignKey' => 'torneio_id'   
         )
     );
 
