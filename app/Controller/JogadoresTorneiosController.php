@@ -22,6 +22,24 @@ class JogadoresTorneiosController extends AppController {
         }
     }
 
+    public function editarTabelaJogadores($id=NULL)
+    {
+        if($id!=NULL)
+        {            
+            $this->JogadorTorneio->Torneio->id = $id;
+            $this->set('torneio', $this->getJogadores($id));
+            $secoes = $this->JogadorTorneio->find("first",array(
+                'conditions' => array(
+                    'JogadorTorneio.torneio_id' => $id                    
+                ),
+                'fields' => array(                    
+                        'MAX(JogadorTorneio.secao) as secao'
+                )
+            ));
+            $this->set('secoes',$secoes[0]["secao"]+1);
+        }
+    }
+
     private function getJogadores($id)
     {
         $i=0;
@@ -45,8 +63,42 @@ class JogadoresTorneiosController extends AppController {
             }
             $i++;
         }
+        $jogadoresTorneioPronto = $this->quickSort($jogadoresTorneioPronto);
         $jogadoresTorneioPronto["Torneio"] = $jogadoresTorneio[0]["Torneio"];
         return $jogadoresTorneioPronto;
+    }
+
+    private function quickSort($array)
+    {        
+        // find array size
+	    $length = count($array);
+	
+	    // base case test, if array of length 0 then just return array to caller
+	    if($length <= 1){
+		    return $array;
+	    }
+	    else{
+	
+		    // select an item to act as our pivot point, since list is unsorted first position is easiest
+		    $pivot = $array[0];
+		
+		    // declare our two arrays to act as partitions
+		    $left = $right = array();
+		
+		    // loop and compare each item in the array to the pivot value, place item in appropriate partition
+		    for($i = 1; $i < $length; $i++)
+		    {
+			    if($array[$i][0]["total"] > $pivot[0]["total"]){
+				    $left[] = $array[$i];
+			    }
+			    else{
+				    $right[] = $array[$i];
+			    }
+		    }
+		
+		    // use recursion to now sort the left and right lists
+		    return array_merge($this->quickSort($left), array($pivot), $this->quickSort($right));
+	    }
     }
 
     private function getTotalPontuacaoJogadores($id)

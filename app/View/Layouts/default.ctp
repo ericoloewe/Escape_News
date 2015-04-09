@@ -80,7 +80,7 @@
                                         <li class="dropdown-submenu">
                                             <a tabindex="-1" href="/Torneios/editar">Editar</a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="/TabelaJogadores/Editar">Tabela Jogadores</a></li>
+                                                <li><a href="/JogadoresTorneios/editarTabelaJogadores">Tabela Jogadores</a></li>
                                                 <li><a href="/Torneios/editar">Torneios</a></li>
                                             </ul>
                                         </li>
@@ -120,6 +120,9 @@
           <?php echo $this->Session->flash();
                 echo $this->fetch('content'); ?>
     </div>
-    </div>    
+    </div>
+    <footer>
+        <p>© 2015 K9STREETPOKER - Todos os direitos reservados<a style="float: right; text-decoration: none; color: #808080;">Érico de Souza Loewe</a></p>
+    </footer>
 </body>
 </html>

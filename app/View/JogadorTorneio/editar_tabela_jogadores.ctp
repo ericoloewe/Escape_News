@@ -1,4 +1,4 @@
-<?php echo $this->Html->css('/css/Pages/JogadoresTorneios/TabelaJogadores'); 
+<?php echo $this->Html->css('/css/Pages/JogadoresTorneios/TabelaJogadores');      
       echo $this->Html->css('/css/Features/jquery.dataTables.min');      
       echo $this->Html->script('/js/Features/jquery.dataTables.min.js');
       echo $this->Html->script('/js/Features/dataTables.bootstrap.js');
@@ -42,14 +42,14 @@
         <thead>
             <tr>
                 <th rowspan="2">Nome</th>
-                <th colspan="<?php echo $secoes[0]["secao"]; ?>" style="border-bottom-color: #fff;">Pontuação</th>
+                <th colspan="<?php echo $secoes; ?>" style="border-bottom-color: #fff;">Pontuação</th>
                 <th rowspan="2">Total</th>
                 <th rowspan="2">Posição</th>
             </tr>
             <tr>
-                <?php for($i=1;$i<=$secoes[0]["secao"];$i++): ?>
-                    <?php if($i==$secoes[0]["secao"]): ?>
-                        <th id='end'>Secao <?php echo $i; ?></th>
+                <?php for($i=1;$i<=$secoes;$i++): ?>
+                    <?php if($i==$secoes): ?>
+                        <th id='end'><i class='glyphicon glyphicon-plus'></i><input id='actualsection' value='<?php echo $i; ?>' hidden><input id='sectionchecked' value='0' hidden></th>
                     <?php else: ?>
                         <th>Secao <?php echo $i; ?></th>
                     <?php endif; ?>
@@ -78,8 +78,14 @@
                                  </dl>
                              </a>
                         </td>
-                        <?php for($j=1;$j<=$secoes[0]["secao"];$j++): ?>                                          
-                            <td><?php echo $jogador["JogadorTorneio"]["secao"][$j]; ?></td>
+                        <?php for($j=1;$j<=$secoes;$j++): ?>
+                            <?php if($j==$secoes): ?>
+                                <td class='inputsections'></td>
+                            <?php else: ?>
+                                <td>
+                                    <input id="jogador<?php echo $jogador["Jogador"]['id']; ?>secao<?php echo $j; ?>" type='number' class='form-control isection' value="<?php echo $jogador["JogadorTorneio"]["secao"][$j]; ?>" onchange="salvarPontuacaoSecao(<?php echo $jogador["Jogador"]['id']; ?>,<?php echo $j; ?>)">
+                                </td>
+                            <?php endif;?>
                         <?php endfor; ?>
                         <td><?php echo $jogador[0]['total']; ?></td>
                         <td><?php echo $this->Link->getPosicaoJogador($i,$tamanho-1);?></td>
@@ -93,7 +99,7 @@
         $(document).ready(function() {
             $('#table-Players').DataTable(
             {
-                "order": [[ <?php echo $secoes[0]["secao"]+1; ?> ]],
+                "order": [[ <?php echo $secoes+1; ?> ]],
                 "language": {
                     "sEmptyTable": "Nenhum registro encontrado",
                     "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
