@@ -1,3 +1,1 @@
-# CakePHP
-
-K9StreetPoker
+# K9StreetPoker
