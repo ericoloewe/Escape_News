@@ -37,6 +37,14 @@ $(function () {
         var date = new Date(data[2], data[1], data[0]);
         $("#TorneioData").val(date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate());
     });
+    $("#end").click(function () {
+        if ($("#sectionchecked").val() == 0) {
+            var tour = $("#idtorneio").val();
+            var sec = $("#actualsection").val();
+            $("#sectionchecked").val(1);
+            $(".inputsections input").css("visibility", "visible");
+        }
+    });
 });
 
 function mascaraPhone(telefone){ 
@@ -96,4 +104,18 @@ function turnOff(obj)
 {
     var form = "#" + obj;
     $(form).css("visibility", "hidden");
+}
+
+function editarPontuacaoSecao(idjog,sec)
+{
+    var valor = "#PontuacaoJogador" + idjog + "Secao" + sec;
+    var idSP = "#IDJogador" + idjog + "Secao" + sec;
+    var idV = $(idSP).val();
+    var val = $(valor).val();
+
+    $.ajax({
+        type: "POST",
+        data: { id:idV, pontuacao: val},
+        url: "/JogadoresTorneios/editarPontuacaoSecao/"
+    });
 }

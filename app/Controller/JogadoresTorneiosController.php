@@ -37,6 +37,19 @@ class JogadoresTorneiosController extends AppController {
                 )
             ));
             $this->set('secoes',$secoes[0]["secao"]+1);
+            //Debugger::dump($this->getJogadores($id));
+        }
+    }
+
+    public function editarPontuacaoSecao()
+    {
+        if ($this->request->is('ajax')) 
+        {
+            $this->layout = "ajax";
+            $id = $this->request->data('id');
+            $pontuacao = $this->request->data('pontuacao');
+            $this->JogadorTorneio->id = $id;
+            $this->JogadorTorneio->save(array('JogadorTorneio'=>array('pontuacao' => $pontuacao)));
         }
     }
 
@@ -56,8 +69,9 @@ class JogadoresTorneiosController extends AppController {
             {
                 if($jogador["JogadorTorneio"]["jogador_id"] == $jogadorP["JogadorTorneio"]["id"])
                 {
-                    $secao = $jogador["JogadorTorneio"]["secao"];
+                    $secao = $jogador["JogadorTorneio"]["secao"];                    
                     $jogadoresTorneioPronto[$i]["JogadorTorneio"]["secao"][$secao] = $jogador["JogadorTorneio"]["pontuacao"];
+                    $jogadoresTorneioPronto[$i]["JogadorTorneio"]["ids"][$secao] = $jogador["JogadorTorneio"]["id"];
                     $jogadoresTorneioPronto[$i]["Jogador"] = $jogador["Jogador"];
                 }
             }

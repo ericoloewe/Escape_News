@@ -35,9 +35,10 @@
             </tr>
         </tbody>
     </table>
-<?php else: ?>
+<?php else: ?><!--///////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <div class="panel panel-default">
   <div class="panel-heading" id="panelHead">Tabela de jogadores do <?php echo $torneio['Torneio']['nome']; ?></div>
+    <input type="hidden" id="idtorneio" value="<?php echo $torneio['Torneio']['id']; ?>">
     <table id="table-Players" class="table table-striped table-bordered" cellspacing="0" width="100%" style="margin-top: 5px;">
         <thead>
             <tr>
@@ -51,12 +52,11 @@
                     <?php if($i==$secoes): ?>
                         <th id='end'><i class='glyphicon glyphicon-plus'></i><input id='actualsection' value='<?php echo $i; ?>' hidden><input id='sectionchecked' value='0' hidden></th>
                     <?php else: ?>
-                        <th>Secao <?php echo $i; ?></th>
+                        <th>Seção <?php echo $i; ?></th>
                     <?php endif; ?>
                 <?php endfor; ?>
             </tr>
         </thead>
- 
         <tbody>
             <?php $i=1;
                   $tamanho = count($torneio);                  
@@ -80,10 +80,13 @@
                         </td>
                         <?php for($j=1;$j<=$secoes;$j++): ?>
                             <?php if($j==$secoes): ?>
-                                <td class='inputsections'></td>
+                                <td class='inputsections'>
+                                    <input  id="PontuacaoJogador<?php echo $jogador["Jogador"]['id']; ?>Secao<?php echo $j; ?>" type='number' class='form-control isection'  onchange="editarPontuacaoSecao(<?php echo $jogador["Jogador"]['id']; ?>,<?php echo $j; ?>)" value="0">
+                                </td>
                             <?php else: ?>
                                 <td>
-                                    <input id="jogador<?php echo $jogador["Jogador"]['id']; ?>secao<?php echo $j; ?>" type='number' class='form-control isection' value="<?php echo $jogador["JogadorTorneio"]["secao"][$j]; ?>" onchange="salvarPontuacaoSecao(<?php echo $jogador["Jogador"]['id']; ?>,<?php echo $j; ?>)">
+                                    <input id="PontuacaoJogador<?php echo $jogador["Jogador"]['id']; ?>Secao<?php echo $j; ?>" type='number' class='form-control isection' value="<?php echo $jogador["JogadorTorneio"]["secao"][$j]; ?>" onchange="editarPontuacaoSecao(<?php echo $jogador["Jogador"]['id']; ?>,<?php echo $j; ?>)">
+                                    <input id="IDJogador<?php echo $jogador["Jogador"]['id']; ?>Secao<?php echo $j; ?>" value="<?php echo $jogador["JogadorTorneio"]["ids"][$j]; ?>" type="hidden">
                                 </td>
                             <?php endif;?>
                         <?php endfor; ?>

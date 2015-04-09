@@ -97,3 +97,7 @@ table th{
 .bubble-top:hover:before, .bubble-top:focus:before, .bubble-top:active:before {
   top: -10px;
 }
+
+.inputsections input{
+    visibility: hidden;
+}

@@ -79,7 +79,9 @@
                              </a>
                         </td>
                         <?php for($j=1;$j<=$secoes[0]["secao"];$j++): ?>                                          
-                            <td><?php echo $jogador["JogadorTorneio"]["secao"][$j]; ?></td>
+                            <td>
+                                <?php echo $jogador["JogadorTorneio"]["secao"][$j]; ?>
+                            </td>
                         <?php endfor; ?>
                         <td><?php echo $jogador[0]['total']; ?></td>
                         <td><?php echo $this->Link->getPosicaoJogador($i,$tamanho-1);?></td>
