@@ -30,7 +30,19 @@ class TorneiosController extends AppController {
             $idjogador = $this->request->data('idjogador');
             $idtorneio = $this->request->data('idtorneio');
             $this->layout = "ajax";
-            $this->Torneio->JogadorTorneio->save(array('JogadorTorneio'=>array('jogador_id' => $idjogador,'torneio_id' => $idtorneio)));              
+            $secoes = $this->Torneio->JogadorTorneio->find("first",array(
+                'conditions' => array(
+                    'JogadorTorneio.torneio_id' => $idtorneio                  
+                ),
+                'fields' => array(                    
+                        'MAX(JogadorTorneio.secao) as secao'
+                )
+            ));
+            $secao = $secoes[0]["secao"];            
+            for($i=1;$i<=$secao;$i++)
+            {
+                $this->Torneio->JogadorTorneio->saveAll(array('JogadorTorneio'=>array('jogador_id' => $idjogador,'torneio_id' => $idtorneio,'secao'=>$i)));
+            }
         }
     }
 
@@ -39,7 +51,7 @@ class TorneiosController extends AppController {
             $idjogador = $this->request->data('idjogador');
             $idtorneio = $this->request->data('idtorneio');
             $this->layout = "ajax";            
-            $id = $this->Torneio->JogadorTorneio->find('first', array(
+            $ids = $this->Torneio->JogadorTorneio->find('all', array(
                 'conditions' => array(
                     'AND' => array(
                         'JogadorTorneio.jogador_id' => $idjogador,
@@ -47,25 +59,30 @@ class TorneiosController extends AppController {
                     )
                 )
             ));
-            $this->Torneio->JogadorTorneio->delete($id["JogadorTorneio"]["id"]);         
+            foreach($ids as $id)
+            {
+                $this->Torneio->JogadorTorneio->delete($id["JogadorTorneio"]["id"]);
+            }            
         }
     }
 
     public function delete($id) {
-        if (!$this->request->is('post')) {
-            throw new MethodNotAllowedException();
-        }
-        if ($this->Torneio->JogadorTorneio->deleteAll(array("JogadorTorneio.torneio_id"=>$id),false)) {
-            if ($this->Torneio->delete($id)) {          
-                $this->Session->setFlash("<script>alert('O Torneio com id: {$id} foi deletado com sucesso!')</script>");
-                $this->redirect('/');
+        if(AuthComponent::user('privilegio') == 1){
+            if (!$this->request->is('post')) {
+                throw new MethodNotAllowedException();
+            }
+            if ($this->Torneio->JogadorTorneio->deleteAll(array("JogadorTorneio.torneio_id"=>$id),false)) {
+                if ($this->Torneio->delete($id)) {          
+                    $this->Session->setFlash("<script>alert('O Torneio com id: {$id} foi deletado com sucesso!')</script>");
+                    $this->redirect('/');
+                }
             }
         }
     }
 
     public function editar($id=NULL)
     {
-        if($id!=NULL)
+        if($id!=NULL&&(AuthComponent::user('privilegio') == 1))
         {            
             $this->Torneio->id = $id;
             $this->set('torneio', $this->Torneio->read());
@@ -107,16 +124,19 @@ class TorneiosController extends AppController {
 
     public function novo()
     {
-        $this->set('jogadores', $this->Torneio->Jogador->find("all"));
-        if ($this->request->is('post')) { 
-            $user = $this->Torneio->saveAll($this->request->data);
-            $this->request->data['JogadorTorneio']['torneio_id'] = $this->Torneio->id;
-            if ($this->Torneio->JogadorTorneio->save($this->request->data)) {
-                $this->Session->setFlash("<script>alert('Torneio Cadastrado Com Sucesso :)')</script>");
-                $this->redirect(array('action' => 'ver',$this->Torneio->id));
-                //Debugger::dump($this->request->data);
-            } else {
-                $this->Session->setFlash("<script>alert('Erro ao Cadastrar Novo Torneio!')</script>");
+        if(AuthComponent::user('privilegio') == 1)
+        {
+            $this->set('jogadores', $this->Torneio->Jogador->find("all"));
+            if ($this->request->is('post')) { 
+                $user = $this->Torneio->saveAll($this->request->data);
+                $this->request->data['JogadorTorneio']['torneio_id'] = $this->Torneio->id;
+                if ($this->Torneio->JogadorTorneio->save($this->request->data)) {
+                    $this->Session->setFlash("<script>alert('Torneio Cadastrado Com Sucesso :)')</script>");
+                    $this->redirect(array('action' => 'ver',$this->Torneio->id));
+                    //Debugger::dump($this->request->data);
+                } else {
+                    $this->Session->setFlash("<script>alert('Erro ao Cadastrar Novo Torneio!')</script>");
+                }
             }
         }
     }

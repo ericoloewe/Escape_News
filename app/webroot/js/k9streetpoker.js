@@ -43,9 +43,34 @@ $(function () {
             var sec = $("#actualsection").val();
             $("#sectionchecked").val(1);
             $(".inputsections input").css("visibility", "visible");
+            $.ajax({
+                type: "POST",
+                data: { id: tour },
+                url: "/JogadoresTorneios/addSecaoTorneio/"
+            });
         }
     });
+    $("#EditarIDVideo").click(function () {
+        var idv = youtube_parser($("#idvideo").val());
+        $.get(
+            "/JogoAgora/Editar/" + idv,
+            null,
+            function () {
+                window.location.assign("/JogoAgora/Ver");
+            }
+        );
+    });
 });
+
+function youtube_parser(url){
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+    var match = url.match(regExp);
+    if (match&&match[7].length==11){
+        return match[7];
+    }else{
+        alert("Url incorreta");
+    }
+}
 
 function mascaraPhone(telefone){ 
    if(telefone.value.length == 0)
@@ -104,6 +129,28 @@ function turnOff(obj)
 {
     var form = "#" + obj;
     $(form).css("visibility", "hidden");
+}
+
+function editarPontuacaoSecaoSemID(idjog,sec)
+{
+    var valor = "#PontuacaoJogador" + idjog + "Secao" + sec;
+    var val = $(valor).val();
+    var idtor = $("#idtorneio").val();
+    var idV=0;
+    $.ajax({
+        type: "POST",
+        data: { secao: sec, idjogador: idjog, idtorneio: idtor },
+        url: "/JogadoresTorneios/getId/",
+        dataType: "html",
+        success: function (result) {
+            idV = result;   
+            $.ajax({
+                type: "POST",
+                data: { id:idV, pontuacao: val},
+                url: "/JogadoresTorneios/editarPontuacaoSecao/"
+            });         
+        }
+    });    
 }
 
 function editarPontuacaoSecao(idjog,sec)

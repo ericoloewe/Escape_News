@@ -81,7 +81,7 @@
                         <?php for($j=1;$j<=$secoes;$j++): ?>
                             <?php if($j==$secoes): ?>
                                 <td class='inputsections'>
-                                    <input  id="PontuacaoJogador<?php echo $jogador["Jogador"]['id']; ?>Secao<?php echo $j; ?>" type='number' class='form-control isection'  onchange="editarPontuacaoSecao(<?php echo $jogador["Jogador"]['id']; ?>,<?php echo $j; ?>)" value="0">
+                                    <input  id="PontuacaoJogador<?php echo $jogador["Jogador"]['id']; ?>Secao<?php echo $j; ?>" type='number' class='form-control isection'  onchange="editarPontuacaoSecaoSemID(<?php echo $jogador["Jogador"]['id']; ?>,<?php echo $j; ?>)" value="0">
                                 </td>
                             <?php else: ?>
                                 <td>

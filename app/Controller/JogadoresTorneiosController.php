@@ -7,7 +7,6 @@ class JogadoresTorneiosController extends AppController {
     {
         if($id!=NULL)
         {            
-            $this->JogadorTorneio->Torneio->id = $id;
             $this->set('torneio', $this->getJogadores($id));
             $secoes = $this->JogadorTorneio->find("first",array(
                 'conditions' => array(
@@ -22,11 +21,58 @@ class JogadoresTorneiosController extends AppController {
         }
     }
 
+    public function getId()
+    {        
+        if ($this->request->is('ajax')) 
+        {
+            $this->layout = "ajax";
+            $secao= $this->request->data('secao');
+            $idjogador= $this->request->data('idjogador');
+            $idtorneio= $this->request->data('idtorneio');            
+            $id = $this->JogadorTorneio->findByJogadorIdAndTorneioIdAndSecao($idjogador,$idtorneio,$secao);
+            $this->set('id',$id["JogadorTorneio"]["id"]);
+        }
+    }
+
+    public function addSecaoTorneio()
+    {
+        if ($this->request->is('ajax')) 
+        {
+            $id  = $this->request->data('id');
+            $this->layout = "ajax";
+            $torneio = $this->JogadorTorneio->find("all",array(
+                'conditions' => array(
+                    'AND' => array(
+                        'JogadorTorneio.secao' => 1,
+                        'JogadorTorneio.torneio_id' => $id                        
+                    )                    
+                )
+            ));         
+            $secoes = $this->JogadorTorneio->find("first",array(
+                'conditions' => array(
+                    'JogadorTorneio.torneio_id' => $id                    
+                ),
+                'fields' => array(                    
+                        'MAX(JogadorTorneio.secao) as secao'
+                )
+            ));
+            $secao = $secoes[0]["secao"]+1;
+            $i = 0;
+            foreach($torneio as $jogador)
+            {
+                $jogador_torneio["JogadorTorneio"][$i]["secao"] = $secao;
+                $jogador_torneio["JogadorTorneio"][$i]["torneio_id"] = $id;
+                $jogador_torneio["JogadorTorneio"][$i]["jogador_id"] = $jogador["Jogador"]["id"];
+                $i++;
+            }
+            $this->JogadorTorneio->saveAll($jogador_torneio["JogadorTorneio"]);
+        }
+    }
+
     public function editarTabelaJogadores($id=NULL)
     {
-        if($id!=NULL)
+        if($id!=NULL&&(AuthComponent::user('privilegio') == 1))
         {            
-            $this->JogadorTorneio->Torneio->id = $id;
             $this->set('torneio', $this->getJogadores($id));
             $secoes = $this->JogadorTorneio->find("first",array(
                 'conditions' => array(

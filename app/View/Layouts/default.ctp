@@ -68,14 +68,17 @@
                                 <li class="dropdown">
                                     <a href="/jogadores/ver" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Jogadores<span class="caret"></span></a>
                                     <ul  class="dropdown-menu" role="menu">
+                                        <?php if($this->Session->read('Auth.User.privilegio') == 1): ?>
                                         <li><a href="/jogadores/novo">Novo</a></li>
                                         <li><a href="/jogadores/editar">Editar</a></li>
+                                        <?php endif; ?>
                                         <li><a href="/jogadores/ver">Ver</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
                                     <a href="/Torneios/view" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Torneios <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
+                                        <?php if($this->Session->read('Auth.User.privilegio') == 1): ?>
                                         <li><a href="/Torneios/novo">Novo</a></li>
                                         <li class="dropdown-submenu">
                                             <a tabindex="-1" href="/Torneios/editar">Editar</a>
@@ -84,6 +87,7 @@
                                                 <li><a href="/Torneios/editar">Torneios</a></li>
                                             </ul>
                                         </li>
+                                        <?php endif; ?>
                                         <li class="dropdown-submenu">
                                             <a tabindex="-1" href="/Torneios/ver">Ver</a>
                                             <ul class="dropdown-menu">
@@ -96,15 +100,22 @@
                                 <li class="dropdown">
                                     <a href="Home.php?u=/Users/Users" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Espaço K9<span class="caret"></span></a>
                                     <ul  class="dropdown-menu" role="menu">
-                                        <li><a href="/Forum/Ver">Forum</a></li>
-                                        <li><a href="/JogoAgora/Ver">Jogo Agora</a></li>
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="/JogoAgora/Ver">Jogo Agora</a>
+                                            <?php if($this->Session->read('Auth.User.privilegio') == 1): ?>
+                                            <ul class="dropdown-menu">                                                
+                                                <li><a href="/JogoAgora/Editar">Editar</a></li>                                                
+                                            </ul>
+                                            <?php endif; ?>
+                                        </li>
+                                        <li><a href="/Forum/Ver">Forum</a></li>                                        
                                     </ul>
                                 </li>
                                 <li><a href="/Contatos/View/">Contato</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-                                <li>
-                                    <a style="color:white"><?php echo $this->Session->read('Auth.User.nome'); ?></a>
+                                <li>                                    
+                                    <a style="color:white"><img src="/app/webroot/img/pics/<?php echo $this->Session->read('Auth.User.id'); ?>.jpg" style="max-width: 19px; max-height: 19px; margin: -5px 10px 0 0;"/><?php echo $this->Session->read('Auth.User.nome'); ?></a>
                                 </li>
                                 <li>
                                     <a href="../../jogadores/logout">Sair</a>

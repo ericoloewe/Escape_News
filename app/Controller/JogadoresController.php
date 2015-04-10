@@ -3,7 +3,7 @@ App::uses('File', 'Utility');
 
 class JogadoresController extends AppController {
     public $name = 'Jogador';
-    
+
     public function login() {
         $this->layout = 'basic';
         if ($this->request->is('post')) {
@@ -26,7 +26,7 @@ class JogadoresController extends AppController {
 
     public function editar($id=NULL)
     {
-        if($id!=NULL)
+        if($id!=NULL&&(AuthComponent::user('privilegio') == 1))
         {
             $this->Jogador->id = $id;
             $this->set('jogador', $this->Jogador->read('id'));        
@@ -47,15 +47,18 @@ class JogadoresController extends AppController {
     }
 
     public function delete($id) {
-        if (!$this->request->is('post')) {
-            throw new MethodNotAllowedException();
-        }
-        if ($this->Jogador->delete($id)) {
-            $file = new File(WWW_ROOT."img".DS."pics".DS.$id.".jpg");
-            if($file->exists()) $file->delete();
-            $file->close();
-            $this->Session->setFlash("<script>alert('O jogador com id: {$id} foi deletado com sucesso!')</script>");
-            $this->redirect('/');
+        if(AuthComponent::user('privilegio') == 1)
+        {
+            if (!$this->request->is('post')) {
+                throw new MethodNotAllowedException();
+            }
+            if ($this->Jogador->delete($id)) {
+                $file = new File(WWW_ROOT."img".DS."pics".DS.$id.".jpg");
+                if($file->exists()) $file->delete();
+                $file->close();
+                $this->Session->setFlash("<script>alert('O jogador com id: {$id} foi deletado com sucesso!')</script>");
+                $this->redirect('/');
+            }
         }
     }
 
@@ -70,19 +73,22 @@ class JogadoresController extends AppController {
 
     public function novo()
     {
-        if ($this->request->is('post')) {            
-            if ($this->Jogador->save($this->request->data)) {
-                if($_FILES['pic']['error']!=4&&isset($_FILES['pic'])) {
-                    $conditions = array("Jogador.email LIKE" => "{$this->request->data['Jogador']['email']}");
-                    $jogador = $this->Jogador->find('all', array('conditions' => $conditions,'limit' => 1));
-                    if(!$this->uploadFoto($jogador[0]["Jogador"]["id"]))
-                        $this->Session->setFlash("<script>alert('Erro ao subir imagem no servidor!')</script>");
-                }
-                $this->Session->setFlash("<script>alert('Jogador Cadastrado Com Sucesso :)')</script>");
-                $this->redirect(array('action' => 'novo'));
-            } else {
-                $this->Session->setFlash("<script>alert('Erro ao Cadastrar Novo Usuario!')</script>");
-            }                        
+        if(AuthComponent::user('privilegio') == 1)
+        {
+            if ($this->request->is('post')) {            
+                if ($this->Jogador->save($this->request->data)) {
+                    if($_FILES['pic']['error']!=4&&isset($_FILES['pic'])) {
+                        $conditions = array("Jogador.email LIKE" => "{$this->request->data['Jogador']['email']}");
+                        $jogador = $this->Jogador->find('all', array('conditions' => $conditions,'limit' => 1));
+                        if(!$this->uploadFoto($jogador[0]["Jogador"]["id"]))
+                            $this->Session->setFlash("<script>alert('Erro ao subir imagem no servidor!')</script>");
+                    }
+                    $this->Session->setFlash("<script>alert('Jogador Cadastrado Com Sucesso :)')</script>");
+                    $this->redirect(array('action' => 'novo'));
+                } else {
+                    $this->Session->setFlash("<script>alert('Erro ao Cadastrar Novo Usuario!')</script>");
+                }                        
+            }
         }
     }
 
