@@ -1,5 +1,5 @@
 <?php
-
+App::uses('CakeEmail', 'Network/Email');
 class ContatosController extends AppController {
     public function view() {
         if(!$this->Session->read('Auth.User'))
@@ -7,9 +7,20 @@ class ContatosController extends AppController {
 	}
 
     public function save()
-    {
+    {        
+        $assunto = $this->request->data["Contato"]['assunto'];
+        $mail = $this->request->data["Contato"]['email'];
+        $nome = $this->request->data["Contato"]['nome'];
+        $mensagem = $this->request->data["Contato"]['mensagem'];
         if ($this->request->is('post')) {
             if ($this->Contato->save($this->request->data)) {
+                $Email = new CakeEmail();
+                $Email->config('default');
+                $Email->from(array('no_reply@k9rs.com.br' => 'no_reply'))
+                    ->to('juliano1978@ig.com.br')
+                    ->cc($mail)
+                    ->subject("Contato com K9StreetPoker de ".$nome.". Assunto: ".$assunto)
+                    ->send($mensagem);
                 $this->Session->setFlash("<script>alert('Sua mensagem foi salva com sucesso :)')</script>");
                 $this->redirect('/');
             } else {

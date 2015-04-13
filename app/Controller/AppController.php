@@ -50,23 +50,9 @@ class AppController extends Controller {
         )
     );
 
-    /*public function isAuthorized($user) {
-        // * Admin section control
-        /*if (empty($this->params['admin'])) {
-            // ** DEFAULT: All users can access public functions
-            return true;
-        } else
-        if(AuthComponent::user('privilegio') == 1){
-            // ** Allow admin users access to everything.
-            return true;
-        }
-        // * DEFAULT: Deny all
-        return false;
-    }*/
-
     public function beforeFilter() {        
         // Mensagens de erro
-        //$this->Auth->allow(array('controller' => 'contatos','action' => 'view'));
+        //$this->Auth->allow(array('controller' => 'contatos','action' => 'view'));        
         $this->Auth->loginError = __("<script>alert('Usuário e/ou senha incorreto(s)')</script>", true);
         $this->Auth->authError = __("<script>alert('Você precisa fazer login para acessar esta página')</script>", true);
     }

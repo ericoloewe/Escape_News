@@ -31,8 +31,7 @@ class JogadoresController extends AppController {
             $this->Jogador->id = $id;
             $this->set('jogador', $this->Jogador->read('id'));        
             if ($this->request->is('get')) {
-                $this->request->data = $this->Jogador->read();
-                //Debugger::dump($this->request->data);
+                $this->request->data = $this->Jogador->read();                
             } else {
                 if ($this->Jogador->save($this->request->data)) {
                     if($_FILES['pic']['error']!=4&&isset($_FILES['pic'])) {                       
@@ -53,11 +52,13 @@ class JogadoresController extends AppController {
                 throw new MethodNotAllowedException();
             }
             if ($this->Jogador->delete($id)) {
-                $file = new File(WWW_ROOT."img".DS."pics".DS.$id.".jpg");
-                if($file->exists()) $file->delete();
-                $file->close();
-                $this->Session->setFlash("<script>alert('O jogador com id: {$id} foi deletado com sucesso!')</script>");
-                $this->redirect('/');
+                if ($this->Jogador->JogadorTorneio->deleteAll(array("JogadorTorneio.jogador_id"=>$id),false)){
+                    $file = new File(WWW_ROOT."img".DS."pics".DS.$id.".jpg");
+                    if($file->exists()) $file->delete();
+                    $file->close();
+                    $this->Session->setFlash("<script>alert('O jogador com id: {$id} foi deletado com sucesso!')</script>");
+                    $this->redirect('/');
+                }
             }
         }
     }

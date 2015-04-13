@@ -33,17 +33,14 @@ footer{
     color: #333;
 }
 
-video{
+#bgvid{
     margin: -210px 0 0 -15px;
     width: 1140px;
     height: 900px;
-}
-
-video#bgvid {
     position: fixed; right: 0; bottom: 0;
     min-width: 100%; min-height: 100%;
     width: auto; height: auto; z-index: -100;
-    background: url(polina.jpg) no-repeat;
+    background: url(/app/webroot/img/armspoker.jpg) no-repeat;
     background-size: cover;
     z-index: 20;
 }
