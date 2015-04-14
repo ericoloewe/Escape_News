@@ -49,7 +49,7 @@
                 array('confirm' => 'Are you sure?','class'=>'glyphicon glyphicon-remove')
             ); ?>
     </div>
-
+<div class="center" style="float: none;">
     <?php echo $this->Form->create('Torneio', array('url' => array('controller' => 'torneios','action' => 'editar'),'class' => 'form-horizontal','role' => 'form')); ?>
     <div class="form-group">        
         <div class="col-sm-10">
@@ -88,81 +88,83 @@
         </div>
     </div>
     <div class="form-group" id="dtable">
-        <label class="col-sm-2 control-label">Participantes:</label>
-        <table class="table table-striped table-bordered" id="playerstable" cellspacing="0" width="100%">
-            <thead>
-                <tr>
-                    <th id="select">Selecionar</th>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Contato</th>
-                    <th>BankHall</th>
-                </tr>
-            </thead>
-            <tbody>                
-                <?php if(isset($jogadoresForadoTorneio))
-                        foreach($jogadoresForadoTorneio as $jogador):?> 
-                        <tr>
-                            <td>
-                                <div class='checkbox'>
-                                    <?php echo $this->Form->checkbox('JogadorTorneio..jogador_id', array('value' => $jogador["id"],'hiddenField' => false,'onchange'=>"addJogadorTorneio(this,'{$jogador['id']}','{$torneio['Torneio']['id']}')")); ?>
-                                </div>
-                            </td>
-                            <td>
-                                <a onmouseover='turnOn(<?php echo $jogador['id']; ?>)' onmouseout='turnOff(<?php echo $jogador['id']; ?>)' href='/jogadores/ver/<?php echo $jogador['id']; ?>'>
-                                    <?php echo $jogador['nome']; ?>
-                                </a>
-                                <b id="<?php echo $jogador['id']; ?>" class='button bubble-top'><img class='img-rounded' style='float: left; width: 50px; height: 50px;' src='/app/webroot/img/pics/<?php echo $jogador['id']; ?>.jpg'/></b></td>
-                            <td>
-                                <a href='mailto:<?php echo $jogador['email']; ?>'>
-                                    <?php echo $jogador['email']; ?>
-                                </a>
-                            </td>
-                            <td>
-                                <?php echo $jogador['phone']; ?>
-                            </td>
-                            <td>
-                                <?php echo $jogador['bankhall']; ?>
-                            </td>
-                        </tr>                    
-                <?php endforeach; ?>
-                <?php foreach($torneio["Jogador"] as $jogador):?>      
-                    <?php if($jogador["JogadoresTorneio"]["secao"]==1): ?>                 
-                <tr>                    
-                    <td>
-                        <div class='checkbox'>
-                            <?php echo $this->Form->checkbox('JogadorTorneio..jogador_id', array('value' => $jogador["id"],'hiddenField' => false,'onchange'=>"addJogadorTorneio(this,'{$jogador['id']}','{$torneio['Torneio']['id']}')",'checked')); ?>
-                        </div>
-                    </td>
-                    <td>
-                        <a onmouseover='turnOn(<?php echo $jogador['id']; ?>)' onmouseout='turnOff(<?php echo $jogador['id']; ?>)' href='/jogadores/ver/<?php echo $jogador['id']; ?>'>
-                            <?php echo $jogador['nome']; ?>
-                        </a>
-                        <b id="<?php echo $jogador['id']; ?>" class='button bubble-top'><img class='img-rounded' style='float: left; width: 50px; height: 50px;' src='/app/webroot/img/pics/<?php echo $jogador['id']; ?>.jpg'/></b></td>
-                    <td>
-                        <a href='mailto:<?php echo $jogador['email']; ?>'>
-                            <?php echo $jogador['email']; ?>
-                        </a>
-                    </td>
-                    <td>
-                        <?php echo $jogador['phone']; ?>
-                    </td>
-                    <td>
-                        <?php echo $jogador['bankhall']; ?>
-                    </td>
-                </tr>
-                    <?php endif; ?>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+        <label class="col-sm-2 control-label">Participantes:</label><br><br>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-responsive" id="playerstable" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th id="select">Selecionar</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Contato</th>
+                        <th>BankHall</th>
+                    </tr>
+                </thead>
+                <tbody>                
+                    <?php if(isset($jogadoresForadoTorneio))
+                            foreach($jogadoresForadoTorneio as $jogador):?> 
+                            <tr>
+                                <td>
+                                    <div class='checkbox'>
+                                        <?php echo $this->Form->checkbox('JogadorTorneio..jogador_id', array('value' => $jogador["id"],'hiddenField' => false,'onchange'=>"addJogadorTorneio(this,'{$jogador['id']}','{$torneio['Torneio']['id']}')")); ?>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a onmouseover='turnOn(<?php echo $jogador['id']; ?>)' onmouseout='turnOff(<?php echo $jogador['id']; ?>)' href='/jogadores/ver/<?php echo $jogador['id']; ?>'>
+                                        <?php echo $jogador['nome']; ?>
+                                    </a>
+                                    <b id="<?php echo $jogador['id']; ?>" class='button bubble-top'><img class='img-rounded' style='float: left; width: 50px; height: 50px;' src='/app/webroot/img/pics/<?php echo $jogador['id']; ?>.jpg'/></b></td>
+                                <td>
+                                    <a href='mailto:<?php echo $jogador['email']; ?>'>
+                                        <?php echo $jogador['email']; ?>
+                                    </a>
+                                </td>
+                                <td>
+                                    <?php echo $jogador['phone']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $jogador['bankhall']; ?>
+                                </td>
+                            </tr>                    
+                    <?php endforeach; ?>
+                    <?php foreach($torneio["Jogador"] as $jogador):?>      
+                        <?php if($jogador["JogadoresTorneio"]["secao"]==1): ?>                 
+                    <tr>                    
+                        <td>
+                            <div class='checkbox'>
+                                <?php echo $this->Form->checkbox('JogadorTorneio..jogador_id', array('value' => $jogador["id"],'hiddenField' => false,'onchange'=>"addJogadorTorneio(this,'{$jogador['id']}','{$torneio['Torneio']['id']}')",'checked')); ?>
+                            </div>
+                        </td>
+                        <td>
+                            <a onmouseover='turnOn(<?php echo $jogador['id']; ?>)' onmouseout='turnOff(<?php echo $jogador['id']; ?>)' href='/jogadores/ver/<?php echo $jogador['id']; ?>'>
+                                <?php echo $jogador['nome']; ?>
+                            </a>
+                            <b id="<?php echo $jogador['id']; ?>" class='button bubble-top'><img class='img-rounded' style='float: left; width: 50px; height: 50px;' src='/app/webroot/img/pics/<?php echo $jogador['id']; ?>.jpg'/></b></td>
+                        <td>
+                            <a href='mailto:<?php echo $jogador['email']; ?>'>
+                                <?php echo $jogador['email']; ?>
+                            </a>
+                        </td>
+                        <td>
+                            <?php echo $jogador['phone']; ?>
+                        </td>
+                        <td>
+                            <?php echo $jogador['bankhall']; ?>
+                        </td>
+                    </tr>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
     <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">            
+        <div class="col-sm-12">            
             <?php echo $this->Form->end(array('label' => 'Atualizar Torneio','class' => 'btn btn-default btn-lg btn-block'));?>
         </div>
     </div>
 </form>
-<div id="teste"></div>
+</div>
 <script>
     $(document).ready(function() {
         $('#playerstable').DataTable({
