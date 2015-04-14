@@ -5,26 +5,30 @@
 <p id="actualpage" hidden><?php echo $this->request->params['action']; ?></p>
 
 <?php if(!isset($jogador)): ?>
-    <table id="sea">
-        <tbody>
-            <tr>
-                <td>                     
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-                </td>
-                <td>
-                    <input class="form-control" id="inameuser" type="search" placeholder="Buscar Jogador" autocomplete="off">
-                </td>
-            </tr>
-            <tr>
-                <td>                
-                </td>
-                <td>
-                    <div id="searchTable">
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<div class="row">
+    <div class="center-block col-xs-12 col-sm-6 col-lg-8">
+        <table id="sea">
+            <tbody>
+                <tr>
+                    <td id="span">                     
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    </td>
+                    <td>
+                        <input class="form-control" id="inameuser" type="search" placeholder="Buscar Jogador" autocomplete="off" aria-describedby="sizing-addon2">
+                    </td>
+                </tr>
+                <tr>
+                    <td id="span">                
+                    </td>
+                    <td>
+                        <div id="searchTable">
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 <?php else: ?>
     <div class="begin">
         <p><img class="img-thumbnail" src="/app/webroot/img/pics/<?php echo $jogador['Jogador']['id']; ?>.jpg" style="max-width: 200px; max-height: 200px;"/></p>

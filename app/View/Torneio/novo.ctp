@@ -78,14 +78,14 @@
     </div>
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">            
-            <?php echo $this->Form->end(array('label' => 'Registrar','class' => 'btn btn-default btn-lg btn-block'));?>
+            <?php echo $this->Form->end(array('label' => 'Registrar','class' => 'btn btn-default btn-lg btn-block','id' => 'registraNovoTorneio'));?>
         </div>
     </div>
 </form>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#playerstable').DataTable({
-            "order": [[ 1, "asc" ]],
+            "order": [[1, "asc"]],
             "language": {
                 "sEmptyTable": "Nenhum registro encontrado",
                 "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -109,6 +109,15 @@
                     "sSortDescending": ": Ordenar colunas de forma descendente"
                 }
             }
-        });           
+        });
+        var table = $('#playerstable').DataTable();
+        $('#TorneioNovoForm').submit(function () {
+            var hiddenArea = $("<div></div>").hide().appendTo("#TorneioNovoForm");
+            table.$('input:hidden').detach().appendTo(hiddenArea);
+
+            // Prevent original submit and resubmit, so the newly added controls are
+            // taken into account
+            this.submit();
+        });
     });
 </script>

@@ -15,7 +15,7 @@
 
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-xs-6 col-sm-4">
                             <?php 
                                 echo $this->Form->input(
                                     'nome',
@@ -28,7 +28,7 @@
 
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-xs-6 col-sm-4">
                             <?php 
                                 echo $this->Form->input(
                                     'email',
@@ -41,7 +41,7 @@
 
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-xs-6 col-sm-4">
                             <?php 
                                 echo $this->Form->input(
                                     'assunto',
@@ -54,7 +54,7 @@
 
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-xs-6 col-sm-4">
                             <?php 
                                 echo $this->Form->input(
                                     'mensagem',
@@ -66,26 +66,32 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-12">                        
-                        <?php echo $this->Form->end(array('label' => 'Enviar','class' => 'btn btn-primary')); ?>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-4">                        
+                            <?php echo $this->Form->end(array('label' => 'Enviar','class' => 'btn btn-primary')); ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </form>
         <div id="endereco" class="col-md-5">
             <div class="row">                
-                <div class="col-md-8 no-padding-left">
+                <div class="col-xs-6 col-sm-4 no-padding-left">
                     <h3 class="margin-top"><i class="glyphicon glyphicon-globe"></i> Endereço:</h3>
                 </div>
             </div>
             <p>Rua Professor Miguel de Vargas, 285 Portao/RS - Brasil</p>
             <br>
-            <div class="maps">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3465.916315625957!2d-51.22299689999999!3d-29.693205799999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95195c7da5ae5d5b%3A0xf980cfcc0c9a44a1!2sR.+Prof.+Miguel+de+Vargas%2C+285+-+Vila+Rica!5e0!3m2!1spt-BR!2sbr!4v1419122839110" frameborder="0" style="border:0">
-                </iframe>
+            <div class="row">
+                <div class="col-xs-6 col-sm-4 no-padding-left">
+                    <div class="maps">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3465.916315625957!2d-51.22299689999999!3d-29.693205799999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95195c7da5ae5d5b%3A0xf980cfcc0c9a44a1!2sR.+Prof.+Miguel+de+Vargas%2C+285+-+Vila+Rica!5e0!3m2!1spt-BR!2sbr!4v1419122839110" frameborder="0" style="border:0">
+                        </iframe>
+                    </div>
+                </div>
             </div>
             <div class="row">
-                <div class="col-md-8 no-padding-left">
+                <div class="col-xs-6 col-sm-4 no-padding-left">
                     <h3 class="margin-top"><i class="glyphicon glyphicon-earphone"></i> Telefone:</h3>
                 </div>
             </div>

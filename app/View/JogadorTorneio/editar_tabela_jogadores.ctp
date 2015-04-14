@@ -6,35 +6,41 @@
 ?>
 
 <?php if(!isset($torneio)): ?>
-    <p id="actualaction" hidden><?php echo $this->request->params['action']; ?></p>
-    <p id="actualcontroller" hidden><?php echo $this->request->params['controller']; ?></p>
-    <table id="sea">
-        <tbody>
-            <tr>
-                <td>                     
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-                </td>
-                <td>
-                    <input id="inametournament" class="form-control" type="search" placeholder="Buscar" autocomplete="off" autofocus="true">
-                </td>
-                <td>
-                    <select id="type" class="form-control">
-                        <option value="nome">Nome</option>
-                        <option value="data">Data</option>
-                        <option value="cash">Cash</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>                
-                </td>
-                <td>
-                    <div id="searchTable">
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<p id="actualaction" hidden><?php echo $this->request->params['action']; ?></p>
+<p id="actualcontroller" hidden><?php echo $this->request->params['controller']; ?></p>
+<div class="row">
+    <div class="center-block col-xs-12 col-sm-6 col-lg-8">
+        <table id="sea">
+            <tbody>
+                <tr>
+                    <td id="span">                     
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    </td>
+                    <td>
+                        <input id="inametournament" class="form-control" type="search" placeholder="Buscar" autocomplete="off" autofocus="true">
+                    </td>
+                    <td id="select">
+                        <select id="type" class="form-control">
+                            <option value="nome">Nome</option>
+                            <option value="data">Data</option>
+                            <option value="cash">Cash</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>                
+                    </td>
+                    <td>
+                        <div id="searchTable">
+                        </div>
+                    </td>
+                    <td>                
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 <?php else: ?><!--///////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <div class="panel panel-default">
   <div class="panel-heading" id="panelHead">Tabela de jogadores do <?php echo $torneio['Torneio']['nome']; ?></div>

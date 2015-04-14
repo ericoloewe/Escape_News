@@ -1,6 +1,5 @@
 #stable{
-    width: 100%;
-    max-width: 500px;
+    width: 85%;
     z-index: 10;
     position:absolute;
     color: #555;
@@ -28,15 +27,18 @@
     background-color: #CCC;
 }
 
-#sea input{    
-    max-width: 500px;
-    width: 500px;
+#sea td input{    
+    width: 100%;
     border-radius: 0;
 }
 
 #sea select{
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
+}
+
+#select{
+    width: 20%;
 }
 
 #sea td span{
@@ -46,8 +48,21 @@
     border-top-left-radius: 4px;
     border-color: rgba(0, 0, 0, 0.00);
     border-right-color: #333;
+    width: 10%;
+}
+#span{
+    width: 10%;
 }
 
 #sea{
     margin: auto auto 50px auto;
+    width: 100%;
+}
+
+.center-block.col-xs-12.col-sm-6.col-lg-8{
+    float: none;
+}
+
+#sear{
+    margin-right: 10px;
 }

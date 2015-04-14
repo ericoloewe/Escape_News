@@ -8,18 +8,19 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h3 class="modal-title" id="myModalLabel">Entre em Contato</h3>
             </div>
-            <div class="modal-body">                      
-                <?php
-                    echo $this->Form->create('Contato', array('url' => array('controller' => 'Contatos','action' => 'save'),'class' => 'form-signin'));
-                ?>          
-                    <div class="col-md-5">
+            <div class="modal-body">  
+                <div class="col-md-5">                    
+                    <?php
+                        echo $this->Form->create('Contato', array('url' => array('controller' => 'Contatos','action' => 'save'),'class' => 'form-signin'));
+                    ?>          
+                    
                         <div class="row">
                             <h3 style="float: left;"><i class="glyphicon glyphicon-pencil"></i> Deixe seu recado</h3>
                         </div>
 
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-xs-6 col-sm-4">
                                     <?php 
                                         echo $this->Form->input(
                                             'nome',
@@ -32,7 +33,7 @@
 
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-xs-6 col-sm-4">
                                     <?php 
                                         echo $this->Form->input(
                                             'email',
@@ -45,7 +46,7 @@
 
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-xs-6 col-sm-4">
                                     <?php 
                                         echo $this->Form->input(
                                             'assunto',
@@ -58,7 +59,7 @@
 
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-xs-6 col-sm-4">
                                     <?php 
                                         echo $this->Form->input(
                                             'mensagem',
@@ -67,21 +68,31 @@
                                     ?>
                                 </div>
                             </div>
+                        </div>               
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-4">                        
+                                    <?php echo $this->Form->end(array('label' => 'Enviar Mensagem','class' => 'btn btn-primary')); ?>
+                                </div>
+                            </div>
                         </div>
-                        <?php echo $this->Form->end(array('label' => 'Enviar Mensagem','class' => 'btn btn-primary')); ?>                     
-                    </div>
-                </form>
+                    </form>
+                </div>                
                 <div id="endereco" class="col-md-5">
                     <div class="row">                
-                        <div class="col-md-8 no-padding-left">
+                        <div class="col-xs-6 col-sm-4 no-padding-left">
                             <h3 class="margin-top"><i class="glyphicon glyphicon-globe"></i> Endereço:</h3>
                         </div>
                     </div>
                     <p>Rua Professor Miguel de Vargas, 285 Portao/RS - Brasil</p>
-                    <br>                    
-                    <div id="map-container"></div>     
+                    <br>
                     <div class="row">
-                        <div class="col-md-8 no-padding-left">
+                        <div class="col-xs-6 col-sm-4 no-padding-left">
+                            <div id="map-container"></div>
+                        </div>
+                    </div>                       
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-4 no-padding-left">
                             <h3 class="margin-top"><i class="glyphicon glyphicon-earphone"></i> Telefone:</h3>
                         </div>
                     </div>
@@ -94,14 +105,14 @@
         </div>
     </div>
 </div>
-
-<?php
+<div class="container">
+    <?php
     echo $this->Html->css('index');
     echo $this->Session->flash('auth');
     echo $this->Form->create('Jogador', array('url' => array('controller' => 'jogadores','action' => 'login'),'class' => 'form-signin'));
-?>
-    <h2>K9 Street Poker</h2>
-<?php
+    ?>
+    <h2 class="form-signin-heading">K9 Street Poker</h2>
+    <?php
     echo $this->Form->input(
         'email',
         array('label' => array('class' => 'sr-only'),'class'=>'form-control','autofocus' => '','placeholder' => 'Email')
@@ -115,4 +126,5 @@
         'Entre em Contato',
         '#contato', array('style' => 'color:#eee; font-weight: bold;','data-toggle' => 'modal','data-target' => '#contato')       
     );    
-?>
+    ?>
+</div>
