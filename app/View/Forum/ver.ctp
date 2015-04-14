@@ -1,14 +1,36 @@
-<?php echo $this->Html->css('/css/Pages/EspacoK9/Forum/Ver'); ?>
+<?php echo $this->Html->css('/css/Pages/Espaco K9/Forum/Ver'); ?>
 
 <div class="panel panel-default">
-  <!-- Default panel contents -->
   <div class="panel-heading" id="panelHead">
-      <form style="float: left;" action="/Pages/EspacoK9/Forum/Forum.php" method="post">
-          <i class="glyphicon glyphicon-plus" style="float: left; margin-top: 2px;" onclick="turnOn('inputAssunto')"></i>
-          <div id="inputAssunto">
-              <input type="text" name="AssuntoForum">
-              <button type="submit" class="btn btn-default">Enviar</button>
-          </div>
+      <?php
+        echo $this->Form->create('Forum', array('url' => array('controller' => 'forum','action' => 'novo'),'class' => 'form-signin','style'=>'float: left;'));
+      ?>
+        <i class="glyphicon glyphicon-plus" style="float: left; margin-top: 2px;" onclick="turnOn('inputAssunto')"></i>
+        <div id="inputAssunto">
+            <input type="text" name="data[Forum][titulo]" placeholder="Insira um Titulo">
+            <button type="submit" class="btn btn-default">Criar</button>
+        </div>
       </form>K9 STREET POKER Forum</div>
-   {SUBJECTS}
+    <table class='table table-bordered'>
+        <thead>
+            <tr>
+                <th>Assunto</th>
+                <th>Visualizacoes</th>
+                <th>Respostas</th>
+                <th>Autor</th>
+                <th>Ultimo Post</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($forum as $topico): ?>
+                <tr>
+                    <td><a href="/Forum/VerAssunto/<?php echo $topico["Forum"]["id"]; ?>"><?php echo $topico["Forum"]["titulo"]; ?></a></td>
+                    <td><?php echo $topico["Forum"]["visualizacoes"]; ?></td>
+                    <td><?php echo $topico["Forum"]["respostas"]; ?></td>
+                    <td>1</td>
+                    <td><?php echo $topico["Forum"]["ultimoPost"]; ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 </div>

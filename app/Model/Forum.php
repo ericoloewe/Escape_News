@@ -1,7 +1,11 @@
 <?php
 class Forum extends AppModel {
-    public $name = 'Contato';
-    public $useTable = 'contato';
+    public $name = 'Forum';
+    public $useTable = 'forum';
+
+    public $hasMany = array(
+        'ForumTopicos' => array('foreignKey' => 'forum_id')
+    );
 
     public $validate = array(
         'titulo' => array(
