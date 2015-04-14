@@ -1,5 +1,4 @@
-<link type="text/css" rel="stylesheet" href="/Styles/Pages/EspacoK9/Forum/Forum.css">
-<!--<link type="text/css" rel="stylesheet" href="/Styles/Pages/Features/hover/hover.css">-->
+<?php echo $this->Html->css('/css/Pages/Espaco K9/Forum/Ver'); ?>
 
 <div class="panel panel-default">
   <!-- Default panel contents -->
