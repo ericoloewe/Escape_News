@@ -60,6 +60,10 @@ $(function () {
             }
         );
     });
+    $("#replysubmit").click(function () {
+        $("#ForumTopicosMensagem").val($("#divText").html());
+        $("#ForumVerAssuntoForm").submit();
+    });
 });
 
 function youtube_parser(url){
@@ -165,4 +169,17 @@ function editarPontuacaoSecao(idjog,sec)
         data: { id:idV, pontuacao: val},
         url: "/JogadoresTorneios/editarPontuacaoSecao/"
     });
+}
+
+function colocaArquivoTextarea()
+{
+    var input = document.getElementById("InputFile");
+    var fReader = new FileReader();    
+    fReader.readAsDataURL(input.files[0]);
+    fReader.onloadend = function (event)
+    {
+        $(".form-control").html(
+            "<img class='img-thumbnail' src=" + event.target.result + " style='max-width: 100%; max-height: 100%;' alt='20'><br>"
+        );
+    }
 }

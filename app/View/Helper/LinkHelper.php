@@ -1,9 +1,15 @@
 <?php
 App::uses('AppHelper', 'View/Helper');
-
 class LinkHelper extends AppHelper {
     public $helpers = array('Html');
-
+    public function getJogador($id,$query) {
+        App::import("Model", "Jogador");
+        $model = new Jogador();
+        $information = $model->find("first",array(
+        'conditions' => 
+        array('Jogador.id' => $id)));
+        return $information["Jogador"][$query];
+    }
     public function getPosicaoJogador($posicao, $total) {
         // Use the HTML helper to output
         // formatted data:
