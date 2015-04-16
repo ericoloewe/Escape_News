@@ -171,15 +171,18 @@ function editarPontuacaoSecao(idjog,sec)
     });
 }
 
-function colocaArquivoTextarea()
+function enviarImagem()
 {
     var input = document.getElementById("InputFile");
     var fReader = new FileReader();    
     fReader.readAsDataURL(input.files[0]);
-    fReader.onloadend = function (event)
-    {
-        $(".form-control").html(
-            "<img class='img-thumbnail' src=" + event.target.result + " style='max-width: 100%; max-height: 100%;' alt='20'><br>"
+    fReader.onloadend = function () {
+        $("#ForumTopicosMensagem").val(
+            "<img class='img-thumbnail' src=" + fReader.result + " style='max-width: 200px; max-height: 200px;' alt='20'><br>"
         );
-    }
+        if (input.files[0].size < 3145728)
+            $("#ForumVerAssuntoForm").submit();
+        else
+            alert("Imagem maior do que 3MB!");
+    }    
 }

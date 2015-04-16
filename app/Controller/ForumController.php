@@ -27,11 +27,11 @@ class ForumController extends AppController {
     public function novoTopico() 
     {
         if ($this->Forum->ForumTopicos->save($this->request->data)) {
-            $this->Session->setFlash("<script>alert('Topico Cadastrado Com Sucesso :)')</script>");
+            $this->Session->setFlash("<script>alert('Mensagem Enviada com sucesso :)')</script>");
             $this->somaUmaReply($this->request->data["ForumTopicos"]["forum_id"]);
             $this->redirect(array('action' => 'VerAssunto',$this->request->data["ForumTopicos"]["forum_id"]));
         } else {
-            $this->Session->setFlash("<script>alert('Erro ao Cadastrar Novo Topico!')</script>");
+            $this->Session->setFlash("<script>alert('Erro ao Enviar Mensagem!')</script>");
         } 
     }
 
@@ -59,30 +59,74 @@ class ForumController extends AppController {
     }
 
     public function delete($id) {
-        if(AuthComponent::user('privilegio') == 1){
-            if (!$this->request->is('post')) {
-                throw new MethodNotAllowedException();
-            }
-            if ($this->Forum->ForumTopicos->deleteAll(array("ForumTopicos.forum_id"=>$id),false)) {
-                if ($this->Forum->delete($id)) {          
-                    $this->Session->setFlash("<script>alert('O Forum com id: {$id} foi deletado com sucesso!')</script>");
-                    $this->redirect('/');
-                }
+        if (!$this->request->is('post')) {
+            throw new MethodNotAllowedException();
+        }
+        if ($this->Forum->ForumTopicos->deleteAll(array("ForumTopicos.forum_id"=>$id),false)) {
+            if ($this->Forum->delete($id)) {          
+                $this->Session->setFlash("<script>alert('O Forum com id: {$id} foi deletado com sucesso!')</script>");
+                $this->redirect('/Forum/Ver');
             }
         }
     }
 
-    public function deleteTopico($id) {
-        if(AuthComponent::user('privilegio') == 1){
-            if (!$this->request->is('post')) 
-            {
-                throw new MethodNotAllowedException();
+    public function deleteTopico($id,$idforum) {
+        if (!$this->request->is('post')) 
+        {
+            throw new MethodNotAllowedException();
+        }
+        if ($this->Forum->ForumTopicos->delete($id)) 
+        {     
+            $this->Session->setFlash("<script>alert('O Topico com id: {$id} foi deletado com sucesso!')</script>");
+            $this->redirect('/Forum/VerAssunto/'.$idforum);
+        }
+    }
+
+    public function editar($id = null) {
+        if (!$id) {
+            throw new NotFoundException(__('Invalid post'));
+        }
+
+        $forum = $this->Forum->findById($id);
+        if (!$forum) {
+            throw new NotFoundException(__('Invalid post'));
+        }
+
+        if ($this->request->is(array('post', 'put'))) {
+            $this->Forum->id = $id;
+            if ($this->Forum->save($this->request->data)) {
+                $this->Session->setFlash(__('Your post has been updated.'));
+                return $this->redirect('/Forum/Ver');
             }
-            if ($this->Forum->ForumTopicos->delete($id)) 
-            {     
-                $this->Session->setFlash("<script>alert('O Topico com id: {$id} foi deletado com sucesso!')</script>");
-                $this->redirect('/');
+            $this->Session->setFlash(__('Unable to update your post.'));
+        }
+
+        if (!$this->request->data) {
+            $this->request->data = $forum;
+        }
+    }
+
+    public function editarTopicos($id = null) {
+        if (!$id) {
+            throw new NotFoundException(__('Invalid post'));
+        }
+
+        $forum = $this->Forum->ForumTopicos->findById($id);
+        if (!$forum) {
+            throw new NotFoundException(__('Invalid post'));
+        }
+
+        if ($this->request->is(array('post', 'put'))) {
+            $this->Forum->ForumTopicos->id = $id;
+            if ($this->Forum->ForumTopicos->save($this->request->data)) {
+                $this->Session->setFlash(__('Your post has been updated.'));
+                return $this->redirect('/Forum/Ver');
             }
+            $this->Session->setFlash(__('Unable to update your post.'));
+        }
+
+        if (!$this->request->data) {
+            $this->request->data = $forum;
         }
     }
 }

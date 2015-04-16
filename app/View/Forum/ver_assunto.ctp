@@ -13,22 +13,20 @@
                         <small>Postado em <?php echo  $topico["data"]; ?></small>
                         <div id="editAndDelete">
                             <?php if($this->Session->read('Auth.User.id') == $topico["autor"]): ?>
-                            <a href="/Forum/Editar/<?php echo $forum["Forum"]["id"]; ?>" class="glyphicon glyphicon-pencil"></a>
+                            <a href="/Forum/EditarTopicos/<?php echo $topico["id"]; ?>" class="glyphicon glyphicon-pencil"></a>
                             <?php endif; ?>
                             <?php if($this->Session->read('Auth.User.privilegio') == 1||$this->Session->read('Auth.User.id') == $topico["autor"]): ?>
                             /
                             <?php echo $this->Form->postLink(
                                 "",
-                                array('action' => 'deleteTopico', $topico["id"]),
+                                array('action' => 'deleteTopico', $topico["id"],$forum["Forum"]["id"]),
                                 array('confirm' => 'Are you sure?','class'=>'glyphicon glyphicon-remove')
                             )?>
                             <?php endif; ?>
                         </div>
                         <p><?php echo  $topico["mensagem"]; ?></p></div>
                     </div>
-                </div>                
-                <!--<span id='reply' onclick='turnONANDOFF({$row['ID']})'>Responder <i class='glyphicon glyphicon-share-alt'></i></span>
-                <span class='button bubble-top replybox' id='{$row['ID']}'>{$this->getReplyTopic($row['ID'])}</span>-->
+                </div>
             </li>
         <?php endforeach; ?>
     </ul>
@@ -41,7 +39,7 @@
                     <tbody>
                         <tr>
                             <td id="span">
-                                <span class="btn btn-default btn-file"><i class="glyphicon glyphicon-picture"><input id="InputFile" type="file" accept=".jpg" onchange="colocaArquivoTextarea()"></i></span>
+                                <span class="btn btn-default btn-file"><i class="glyphicon glyphicon-picture"><input id="InputFile" type="file" accept=".jpg" onchange="enviarImagem()"></i></span>
                             </td>
                             <td id="textarea">
                                 <div contentEditable="true" style="width: 100%;" class='form-control' id="divText">
@@ -51,7 +49,7 @@
                                 <?php
                                 echo $this->Form->input(
                                     'ForumTopicos.mensagem',
-                                    array('label' => array('class' => 'sr-only'),'hidden')
+                                    array('label' => array('class' => 'sr-only'),'hidden','rows'=>20)
                                 );
                                 echo $this->Form->input(
                                     'ForumTopicos.forum_id',
