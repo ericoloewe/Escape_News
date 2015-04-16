@@ -100,3 +100,14 @@ input[type="submit"]{
 .center-block.col-xs-12.col-sm-6.col-lg-8{
     float: none;
 }
+
+#editAndDelete{
+    color: #fff;
+    text-decoration:none;
+    float: right;
+    margin-right: 5px;
+}
+#editAndDelete a {
+    color: #fff;
+    text-decoration:none;
+}

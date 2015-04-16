@@ -11,6 +11,19 @@
                         <div class='picture'><img class='img-circle' style='float: left; width: 50px; height: 50px;' src='/app/webroot/img/pics/<?php echo  $topico["autor"]; ?>.jpg'/></div>
                         <div class='post'><a href="/jogadores/ver/<?php echo $topico["autor"]; ?>"><?php echo  $this->Link->getJogador($topico["autor"],'nome'); ?></a>
                         <small>Postado em <?php echo  $topico["data"]; ?></small>
+                        <div id="editAndDelete">
+                            <?php if($this->Session->read('Auth.User.id') == $topico["autor"]): ?>
+                            <a href="/Forum/Editar/<?php echo $forum["Forum"]["id"]; ?>" class="glyphicon glyphicon-pencil"></a>
+                            <?php endif; ?>
+                            <?php if($this->Session->read('Auth.User.privilegio') == 1||$this->Session->read('Auth.User.id') == $topico["autor"]): ?>
+                            /
+                            <?php echo $this->Form->postLink(
+                                "",
+                                array('action' => 'deleteTopico', $topico["id"]),
+                                array('confirm' => 'Are you sure?','class'=>'glyphicon glyphicon-remove')
+                            )?>
+                            <?php endif; ?>
+                        </div>
                         <p><?php echo  $topico["mensagem"]; ?></p></div>
                     </div>
                 </div>                
