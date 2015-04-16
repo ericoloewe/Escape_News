@@ -35,11 +35,12 @@ class ForumController extends AppController {
         } 
     }
 
-    public function verAssunto($id=NULL) 
+    public function verAssunto($id=NULL,$page=NULL) 
     {
         $this->somaUmView($id);
         $this->Forum->id = $id;
         $this->set('forum', $this->Forum->read());        
+        $this->set('pagAtual', $page-1);
 	}
 
     private function somaUmView($id)

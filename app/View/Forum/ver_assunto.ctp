@@ -1,10 +1,13 @@
-<?php echo $this->Html->css('/css/Pages/Espaco K9/Forum/VerAssunto'); ?>
+<?php echo $this->Html->css('/css/Pages/Espaco K9/Forum/VerAssunto'); 
+      $maxPages = (count($forum["ForumTopicos"])/10)+1;
+ ?>
 
 <div class="panel panel-default">
   <div class="panel-heading" id="panelHead"> <h4><?php echo $forum["Forum"]["titulo"]?></h4>
   </div>
     <ul class='topicos'>
-        <?php foreach($forum["ForumTopicos"] as $topico): ?>
+        <?php for($i=($pagAtual*10);$i<=($pagAtual*10)+10&&!empty($forum["ForumTopicos"][$i]);$i++): ?>
+            <?php $topico = $forum["ForumTopicos"][$i]; ?>
             <li>
                 <div class="row">
                     <div class="col-md-12">
@@ -28,7 +31,7 @@
                     </div>
                 </div>
             </li>
-        <?php endforeach; ?>
+        <?php endfor; ?>
     </ul>
     <div class="row">
         <div class="center-block col-xs-12 col-sm-6 col-lg-8">
@@ -68,4 +71,23 @@
                 </table>
         </div>
     </div>
+    <nav>
+      <ul class="pagination">
+        <li>
+            <?php if($pagAtual<=1) $anterior=1; else $anterior = $pagAtual-1;?>
+          <a href="/forum/VerAssunto/<?php echo $forum["Forum"]["id"]."/".$anterior; ?>" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <?php for($i=1;$i<=$maxPages;$i++): ?>
+            <li><a href="/forum/VerAssunto/<?php echo $forum["Forum"]["id"]."/".$i; ?>"><?php echo $i; ?></a></li>
+        <?php endfor; ?>
+        <li>
+            <?php if($pagAtual==$maxPages) $prox=$maxPages; else $prox = $pagAtual+1;?>
+          <a href="/forum/VerAssunto/<?php echo $forum["Forum"]["id"]."/".$prox; ?>" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
 </div>

@@ -12,7 +12,9 @@
         </div>
         </form>
         <?php endif; ?>
-        K9 STREET POKER Forum</div>
+
+        K9 STREET POKER Forum
+    </div>
 <div style="overflow-x: auto;">
     <table class='table table-bordered' style="height: 100%;">
         <thead>
@@ -30,7 +32,7 @@
         <tbody>
             <?php foreach($forum as $topico): ?>
                 <tr>
-                    <td><a href="/Forum/VerAssunto/<?php echo $topico["Forum"]["id"]; ?>"><?php echo $topico["Forum"]["titulo"]; ?></a></td>
+                    <td><a href="/Forum/VerAssunto/<?php echo $topico["Forum"]["id"]; ?>/1"><?php echo $topico["Forum"]["titulo"]; ?></a></td>
                     <td><?php echo $topico["Forum"]["visualizacoes"]; ?></td>
                     <td><?php echo $topico["Forum"]["respostas"]; ?></td>
                     <td><?php echo $this->Link->getJogador($topico["Forum"]["autor"],'nome'); ?></td>

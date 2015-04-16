@@ -78,6 +78,8 @@
                                         <li><a href="/jogadores/editar">Editar</a></li>
                                         <?php endif; ?>
                                         <li><a href="/jogadores/ver">Ver</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="/jogadores/verTodos">Ver Todos</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
@@ -100,6 +102,8 @@
                                                 <li><a href="/Torneios/ver">Torneios</a></li>
                                             </ul>
                                         </li>
+                                        <li class="divider"></li>
+                                        <li><a href="/Torneios/VerTodos">Ver Todos</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
