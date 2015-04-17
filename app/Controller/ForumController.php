@@ -27,21 +27,58 @@ class ForumController extends AppController {
     public function novoTopico() 
     {
         if ($this->Forum->ForumTopicos->save($this->request->data)) {
+            $this->atualizarUltimoPost($this->request->data["ForumTopicos"]["forum_id"]);
             $this->Session->setFlash("<script>alert('Mensagem Enviada com sucesso :)')</script>");
             $this->somaUmaReply($this->request->data["ForumTopicos"]["forum_id"]);
-            $this->redirect(array('action' => 'VerAssunto',$this->request->data["ForumTopicos"]["forum_id"]));
+            $this->redirect(array('action' => 'VerAssunto',$this->request->data["ForumTopicos"]["forum_id"],1));
         } else {
             $this->Session->setFlash("<script>alert('Erro ao Enviar Mensagem!')</script>");
         } 
     }
 
-    public function verAssunto($id=NULL,$page=NULL) 
+    private function atualizarUltimoPost($id)
+    {
+        $this->Forum->id = $id;
+        $forum = $this->Forum->read();
+        $forum["Forum"]["ultimoPost"] = date("Y-m-d H:i:s");
+        $this->Forum->save($forum["Forum"]);
+    }
+
+    public function verAssunto($id=NULL,$page=1) 
     {
         $this->somaUmView($id);
         $this->Forum->id = $id;
-        $this->set('forum', $this->Forum->read());        
-        $this->set('pagAtual', $page-1);
+        $forum = $this->Forum->read();
+        $maxPages = (count($forum["ForumTopicos"])/10);
+        if(!is_int($maxPages))
+            $maxPages++;
+        if($page==$maxPages) 
+            $prox=$maxPages; 
+        else 
+            $prox = $page+1;
+        if($page<=1) 
+            $ant=1; 
+        else 
+            $ant = $page-1;
+        if(!empty($forum["ForumTopicos"]))
+            $forum = $this->getTopicosDaPag($forum,$page);
+        $this->set('forum', $forum);        
+        $this->set('pagAtual', $page);
+        $this->set('prox', $prox);
+        $this->set('anterior', $ant);
+        $this->set('maxPages', $maxPages);
 	}
+
+    private function getTopicosDaPag($forum,$page)
+    {
+        $page--;
+        for($i=($page*10);$i<=($page*10)+10&&!empty($forum["ForumTopicos"][$i]);$i++)
+        {
+            $forumTopicos[] = $forum["ForumTopicos"][$i];
+        }
+        $forum["ForumTopicos"] = $forumTopicos;
+        return $forum;
+    }
 
     private function somaUmView($id)
     {
@@ -58,6 +95,14 @@ class ForumController extends AppController {
         $forum["Forum"]["respostas"] = $forum["Forum"]["respostas"]+1;
         $this->Forum->save($forum["Forum"]);
     }
+
+    private function subtraiUmaReply($id)
+    {
+        $this->Forum->id = $id;
+        $forum = $this->Forum->read();
+        $forum["Forum"]["respostas"] = $forum["Forum"]["respostas"]-1;
+        $this->Forum->save($forum["Forum"]);
+    }    
 
     public function delete($id) {
         if (!$this->request->is('post')) {
@@ -78,6 +123,7 @@ class ForumController extends AppController {
         }
         if ($this->Forum->ForumTopicos->delete($id)) 
         {     
+            $this->subtraiUmaReply($idforum);
             $this->Session->setFlash("<script>alert('O Topico com id: {$id} foi deletado com sucesso!')</script>");
             $this->redirect('/Forum/VerAssunto/'.$idforum);
         }

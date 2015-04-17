@@ -47,7 +47,7 @@
                         )?>
                     </td>
                     <?php endif; ?>
-                    <td><?php echo $topico["Forum"]["ultimoPost"]; ?></td>
+                    <td><?php echo $this->Link->converteData($topico["Forum"]["ultimoPost"]); ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

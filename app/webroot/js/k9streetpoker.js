@@ -178,7 +178,7 @@ function enviarImagem()
     fReader.readAsDataURL(input.files[0]);
     fReader.onloadend = function () {
         $("#ForumTopicosMensagem").val(
-            "<img class='img-thumbnail' src=" + fReader.result + " style='max-width: 200px; max-height: 200px;' alt='20'><br>"
+            "<img class='img-thumbnail' src=" + fReader.result + " style='max-width: 100%; max-height: 100%;' alt='20'><br>"
         );
         if (input.files[0].size < 3145728)
             $("#ForumVerAssuntoForm").submit();

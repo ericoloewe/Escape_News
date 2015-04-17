@@ -2,6 +2,14 @@
 App::uses('AppHelper', 'View/Helper');
 class LinkHelper extends AppHelper {
     public $helpers = array('Html');
+
+    public function converteData($data)
+    {
+        $time = strtotime($data);
+        $dataFormatada = date("d/m/y - G:i:s", $time);
+        return $dataFormatada;
+    }
+
     public function getJogador($id,$query) {
         App::import("Model", "Jogador");
         $model = new Jogador();
@@ -10,6 +18,7 @@ class LinkHelper extends AppHelper {
         array('Jogador.id' => $id)));
         return $information["Jogador"][$query];
     }
+
     public function getPosicaoJogador($posicao, $total) {
         // Use the HTML helper to output
         // formatted data:
