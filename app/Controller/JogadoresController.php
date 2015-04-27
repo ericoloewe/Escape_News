@@ -72,6 +72,11 @@ class JogadoresController extends AppController {
         }
     }
 
+    public function verTodos()
+    {
+        $this->set('jogadores', $this->Jogador->find("all"));
+    }
+
     public function novo()
     {
         if(AuthComponent::user('privilegio') == 1)

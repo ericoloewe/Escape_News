@@ -1,0 +1,64 @@
+* { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+#cycle-1 div { width:100%; }
+#cycle-1 img{
+    max-height: 457px;
+}
+#cycle-2 .cycle-slide { border:3px solid #000; }
+#cycle-2 .cycle-slide-active { border:3px solid #fff; }
+
+#slideshow-1,#slideshow-2 { width: 50%; max-width: 600px; margin: auto }
+#slideshow-2 { margin-top: 10px }
+.cycle-slideshow img { width: 100%; height: auto; display: block; }
+
+.nomeAlbum { position: absolute; background: black; color: white; opacity: .5; top: 15px; left: 15px; z-index: 700; padding: 2px; border-radius: 20%; }
+
+.cycle-overlay { 
+    font-family: tahoma, arial;
+    position: absolute; bottom: 0; width: 100%; z-index: 600;
+    background: black; color: white; padding: 15px; opacity: .5;
+}
+
+#cycle-2{
+    max-height: 93px;
+    height:93px;        
+}
+
+.cycle-carousel-wrap img{
+    max-height: 93px;
+    height:93px;
+    max-width: 112px;
+}
+
+#main,#slideshow-1{
+    max-height: 610px;
+    width: 100%;
+}
+
+.novo,.novo:hover{
+    text-decoration: none;
+    float: right;
+    color: #fff;
+}
+
+@media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
+    .cycle-prev, .cycle-next { position: absolute; top: 0; width: 30%; opacity: 0; filter: alpha(opacity=0); z-index: 800; height: 100%; cursor: pointer; }
+    .cycle-prev { left: 0;  background: url(http://malsup.github.com/images/left.png) 50% 50% no-repeat;}
+    .cycle-next { right: 0; background: url(http://malsup.github.com/images/right.png) 50% 50% no-repeat;}
+    .cycle-prev:hover, .cycle-next:hover { opacity: .7; filter: alpha(opacity=70) }
+    #cycle-2,#cycle-2 img,.cycle-slide.cycle-slide-active,#slideshow-2{
+        position: absolute;
+        visibility: hidden;
+        top: 10px;
+        z-index: -10;
+    }
+    #cycle-1 img{
+        max-height: 200px;
+        height: 200px;
+    }
+}
+
+/* prev / next links 
+.cycle-prev, .cycle-next { position: absolute; top: 0; width: 30%; opacity: 0; filter: alpha(opacity=0); z-index: 800; height: 100%; cursor: pointer; }
+.cycle-prev { left: 0;  background: url(http://malsup.github.com/images/left.png) 50% 50% no-repeat;}
+.cycle-next { right: 0; background: url(http://malsup.github.com/images/right.png) 50% 50% no-repeat;}
+.cycle-prev:hover, .cycle-next:hover { opacity: .7; filter: alpha(opacity=70) }*/

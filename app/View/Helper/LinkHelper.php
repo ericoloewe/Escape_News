@@ -10,6 +10,40 @@ class LinkHelper extends AppHelper {
         return $dataFormatada;
     }
 
+    public function converteDataSemHora($data)
+    {
+        $time = strtotime($data);
+        $dataFormatada = date("d/m/y", $time);
+        return $dataFormatada;
+    }
+
+    public function getTipo($cat)
+    {
+        switch ($cat) {
+            case 0:
+                $type = "Free Rool";
+                break;
+            case 1:
+                $type = "Deep";
+                break;
+            case 2:
+                $type = "Cash Game";
+                break;
+            case 3:
+                $type = "Micro stack";
+                break;
+            case 4:
+                $type = "Sit go";
+                break;
+            case 5:
+                $type = "Home Game";
+                break;
+            default:
+               $type = "is not a type";
+        }
+        return $type;
+    }
+
     public function getJogador($id,$query) {
         App::import("Model", "Jogador");
         $model = new Jogador();

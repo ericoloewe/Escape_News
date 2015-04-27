@@ -1,6 +1,7 @@
 <?php
 class TorneiosController extends AppController {
     public $name = 'Torneio';
+    public $helpers = array('Link');
     
     public function ver($id=NULL)
     {
@@ -44,6 +45,11 @@ class TorneiosController extends AppController {
                 $this->Torneio->JogadorTorneio->saveAll(array('JogadorTorneio'=>array('jogador_id' => $idjogador,'torneio_id' => $idtorneio,'secao'=>$i)));
             }
         }
+    }
+
+    public function verTodos()
+    {
+        $this->set('torneios', $this->Torneio->find("all"));
     }
 
     public function delJogadorTorneio() {

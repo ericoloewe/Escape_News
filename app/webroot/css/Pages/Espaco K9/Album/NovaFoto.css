@@ -1,0 +1,59 @@
+#img-new{
+    width: 100%;
+    height: 500px;
+}
+
+.imagem{
+    width: 100%;
+    height: 500px;
+    margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
+    #img-new{
+        width: 100%;
+        height: 300px;
+    }
+
+    .imagem{
+        width: 100%;
+        height: 300px;
+    }
+}
+
+/*Button File*/
+.btn-file {
+    opacity: .5;
+    background-color: #333;
+    color: #fff;
+    left: 23px;
+    top: 512px;
+    width:38px;
+    height: 30px;
+    position: absolute;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: center;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;    
+}
+/*//////////////////////////*/
+
+input,textarea{
+    margin-bottom: 10px;
+}
+
+.submit{
+    margin-top: 10px;
+}

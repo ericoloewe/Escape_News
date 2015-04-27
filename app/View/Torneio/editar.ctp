@@ -24,6 +24,7 @@
                             <option value="nome">Nome</option>
                             <option value="data">Data</option>
                             <option value="cash">Cash</option>
+                            <option value="tipo">Categoria</option>
                         </select>
                     </td>
                 </tr>
@@ -76,6 +77,20 @@
                     array('hidden'=>'','label' => array('class' => 'sr-only'),'type' => 'text','maxlength'=>'10')
                 ); ?>
                 
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Categoria:*</label>
+        <div class="col-sm-10">
+            <select name="data[Torneio][categoria]" id="TorneioCategoria" class="form-control">
+                <option value="<?php echo $torneio['Torneio']['tipo']; ?>"><?php echo $this->Link->getTipo($torneio['Torneio']['tipo']); ?></option>
+                <option value="0">Free Rool</option>
+                <option value="1">Deep</option>
+                <option value="2">Cash Game</option>
+                <option value="3">Micro stack</option>
+                <option value="4">Sit go</option>
+                <option value="5">Home Game</option>
+            </select>
         </div>
     </div>
     <div class="form-group">

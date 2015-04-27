@@ -1,16 +1,3 @@
-@media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
-    .table-responsive{
-        overflow-x: auto;
-    }
-    .form-group input,.form-group select{
-        margin: 10px;
-    }
-}
-
-.new-tournament{
-    margin: auto auto auto 0;    
-}
-
 .table td{
     background-color: #333;
     text-align: center;
@@ -41,17 +28,6 @@
     margin: auto auto auto auto;    
 }
 
-.form-group{
-    max-width: 98%;
-}
-
-.btn.btn-default.btn-lg.btn-block{
-    margin-left: 20px;
-}
-
-#dtable{
-    margin-left: 10px;
-}
 
 /* Bubble Top */
 .bubble-top {
@@ -60,7 +36,6 @@
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  left: calc(30% - 30px);
 }
 .bubble-top:before {
   pointer-events: none;

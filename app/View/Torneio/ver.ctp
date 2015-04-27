@@ -20,6 +20,7 @@
                             <option value="nome">Nome</option>
                             <option value="data">Data</option>
                             <option value="cash">Cash</option>
+                            <option value="tipo">Categoria</option>
                         </select>
                     </td>
                 </tr>
@@ -44,7 +45,11 @@
         </tr>
         <tr>
             <td>Data:</td>
-            <td><i class="glyphicon glyphicon-calendar"></i> <?php echo $torneio[0]['Torneio']['data']; ?></td>
+            <td><i class="glyphicon glyphicon-calendar"></i> <?php echo $this->Link->converteDataSemHora($torneio[0]['Torneio']['data']); ?></td>
+        </tr>
+        <tr>
+            <td>Categoria:</td>
+            <td><i class="glyphicon glyphicon-usd"></i> <?php echo $this->Link->getTipo($torneio[0]['Torneio']['tipo']); ?> </td>
         </tr>
         <tr>
             <td>CASH:</td>

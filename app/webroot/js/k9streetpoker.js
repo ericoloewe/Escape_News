@@ -37,6 +37,11 @@ $(function () {
         var date = new Date(data[2], data[1], data[0]);
         $("#TorneioData").val(date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate());
     });
+    $("#inputDataFoto").change(function () {
+        data = $(this).val().split("/");
+        var date = new Date(data[2], data[1], data[0]);
+        $("#ImagensData").val(date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate());
+    });
     $("#end").click(function () {
         if ($("#sectionchecked").val() == 0) {
             var tour = $("#idtorneio").val();
@@ -123,10 +128,28 @@ function pegarCaminhoArquivo()
     }
 }
 
+function colocarNovaFoto()
+{
+    var input = document.getElementById("InputFile");
+    var fReader = new FileReader();    
+    fReader.readAsDataURL(input.files[0]);
+    fReader.onloadend = function (event) {
+        var img = document.getElementById("img-new");
+        img.src = event.target.result;
+        $("#ImagensImagem").val(event.target.result);
+    }
+}
+
 function turnOn(obj)
 {
     var form = "#" + obj;
     $(form).css("visibility", "visible");
+}
+
+function changePosition(obj)
+{
+    var form = "#" + obj;
+    $(form).css("position", "relative");
 }
 
 function turnOff(obj)
