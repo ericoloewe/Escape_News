@@ -65,7 +65,7 @@
                     </div>
                         <div id="navbar" class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li><a href="/Noticias/Ver">Home</a></li>
+                                <li><a href="/Noticias/Ver">News</a></li>
                                 <li class="dropdown">
                                     <a href="/Usuarios/Ver" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Usuarios<span class="caret"></span></a>
                                     <ul  class="dropdown-menu" role="menu">
