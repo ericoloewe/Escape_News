@@ -80,7 +80,7 @@
                     <h3 class="margin-top"><i class="glyphicon glyphicon-globe"></i> Endereço:</h3>
                 </div>
             </div>
-            <p>Rua Professor Miguel de Vargas, 285 Portao/RS - Brasil</p>
+            <p>R. Felipe Bernd, 87, sala 01, B. Rio Branco, Novo Hamburgo - RS</p>
             <br>
             <div class="row">
                 <div class="col-xs-6 col-sm-4 no-padding-left">
@@ -95,7 +95,7 @@
                     <h3 class="margin-top"><i class="glyphicon glyphicon-earphone"></i> Telefone:</h3>
                 </div>
             </div>
-            <p>+55 (51) 9834-0648</p>
+            <p>+55 (51) 3065-2624</p>
         </div>               
     </div>
 </div>

@@ -25,12 +25,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>
-    K9StreetPoker
+    Escape News
     </title>
   <?php
 		echo $this->Html->meta(
-            'kpoker.ico',
-            '/app/webroot/img/kpoker.ico',
+            'escape.ico',
+            '/app/webroot/img/escape.ico',
             array('type' => 'icon')
         );
 
@@ -42,10 +42,8 @@
 	?>
     <?php
         echo $this->Html->script('/js/Features/jquery-2.1.3.min.js');    
-        echo $this->Html->script('/js/Features/bootstrap.min.js');   
-        echo $this->Html->script('/js/Features/bootstrap-datepicker.js');
-        echo $this->Html->script('/js/Features/bootstrap-datepicker.pt-BR.js');       
-        echo $this->Html->script('/js/k9streetpoker.js');    
+        echo $this->Html->script('/js/Features/bootstrap.min.js'); 
+        echo $this->Html->script('/js/escapenews.js');    
         echo $this->fetch('script');
     ?>
     <link href='http://fonts.googleapis.com/css?family=Sanchez' rel='stylesheet' type='text/css'>

@@ -16,10 +16,10 @@ class ContatosController extends AppController {
             if ($this->Contato->save($this->request->data)) {
                 $Email = new CakeEmail();
                 $Email->config('default');
-                $Email->from(array('no_reply@k9rs.com.br' => 'no_reply'))
-                    ->to('juliano1978@ig.com.br')
+                $Email->from(array('0118340@feevale.br' => 'Diretor do Escape News'))
+                    ->to("0118340@feevale.br")
                     ->cc($mail)
-                    ->subject("Contato com K9StreetPoker de ".$nome.". Assunto: ".$assunto)
+                    ->subject("Contato com Escape News de ".$nome.". Assunto: ".$assunto)
                     ->send($mensagem);
                 $this->Session->setFlash("<script>alert('Sua mensagem foi salva com sucesso :)')</script>");
                 $this->redirect('/');

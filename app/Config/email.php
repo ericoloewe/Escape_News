@@ -40,16 +40,17 @@
 class EmailConfig {
 
 	public $default = array(
-        'from' => array('no_reply@k9rs.com.br' => 'no_reply'),
-		'host' => 'smtp.k9rs.com.br',
+        'from' => array('0118340@feevale.br' => 'Diretor do Escape News'),
+		'host' => 'smtp.office365.com',
         'port' => 587,
-        'username' => 'no_reply@k9rs.com.br',
-        'password' => 'pass@word1',
+        'username' => '0118340@feevale.br',
+        'password' => '160996',
         'transport' => 'Smtp',
         'timeout' => 30,
 		'client' => null,
         'charset' => 'utf-8',
-		'log' => false
+		'log' => false,
+        'tls' => true
 	);
 
 	/*public $smtp = array(

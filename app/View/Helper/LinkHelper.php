@@ -44,47 +44,39 @@ class LinkHelper extends AppHelper {
         return $type;
     }
 
-    public function getJogador($id,$query) {
-        App::import("Model", "Jogador");
-        $model = new Jogador();
+    public function getUsuario($id,$query) {
+        App::import("Model", "Usuario");
+        $model = new Usuario();
         $information = $model->find("first",array(
         'conditions' => 
-        array('Jogador.id' => $id)));
-        return $information["Jogador"][$query];
+        array('Usuario.id' => $id)));
+        return $information["Usuario"][$query];
     }
 
-    public function getPosicaoJogador($posicao, $total) {
+    public function getPrioridade($prioridade) {
         // Use the HTML helper to output
         // formatted data:
         $glyphs = "";
-        switch($posicao)
+        switch($prioridade)
         {
             case 1:{
-                $glyphs = "<i class='glyphicon glyphicon-star' style='color: #daa520;'></i>";
+                $glyphs = "<i class='glyphicon glyphicon-flag' style='color: #daa520;'></i>";
                 break;
             }
             case 2:{
-                $glyphs = "<i class='glyphicon glyphicon-star' style='color: #c0c0c0;'></i>";
+                $glyphs = "<i class='glyphicon glyphicon-flag' style='color: #c0c0c0;'></i>";
                 break;
             }
             case 3:{
-                $glyphs = "<i class='glyphicon glyphicon-star' style='color: #CD7F32;'></i>";
+                $glyphs = "<i class='glyphicon glyphicon-flag' style='color: #CD7F32;'></i>";
                 break;
             }
-            case $total-2:{
-                $glyphs = "<i class='glyphicon glyphicon-circle-arrow-down' style='color: #FF6600;'></i>";
-                break;
-            }
-            case $total-1:{
-                $glyphs = "<i class='glyphicon glyphicon-circle-arrow-down' style='color: #FF3300;'></i>";
-                break;
-            }
-            case $total:{
-                $glyphs = "<i class='glyphicon glyphicon-circle-arrow-down' style='color: #FF0000;'></i>";
+            default:{
+                $glyphs = "";
                 break;
             }
         }
         return $glyphs;
-    }
+    }    
 }
 ?>

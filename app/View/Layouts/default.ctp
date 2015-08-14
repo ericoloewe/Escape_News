@@ -25,12 +25,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>
-    K9StreetPoker
+    Escape News
     </title>
   <?php
 		echo $this->Html->meta(
-            'kpoker.ico',
-            '/app/webroot/img/kpoker.ico',
+            'escape.ico',
+            '/app/webroot/img/escape.ico',
             array('type' => 'icon')
         );
 
@@ -38,17 +38,13 @@
         echo $this->Html->css('default');
         echo $this->Html->css(array('/css/Features/bootstrap-theme.min','/css/Features/bootstrap.min'));
         echo $this->Html->css('/css/Pages/Main');
-        echo $this->Html->css('/css/Features/dataTables.bootstrap.min.css');
-        echo $this->Html->css('/css/Features/datepicker3.min.css');
 		echo $this->fetch('meta');
 		echo $this->fetch('css');        
 	?>
     <?php
         echo $this->Html->script('/js/Features/jquery-2.1.3.min.js');    
-        echo $this->Html->script('/js/Features/bootstrap.min.js');
-        echo $this->Html->script('/js/Features/bootstrap-datepicker.min.js');
-        echo $this->Html->script('/js/Features/bootstrap-datepicker.pt-BR.js');        
-        echo $this->Html->script('/js/k9streetpoker.js');    
+        echo $this->Html->script('/js/Features/bootstrap.min.js');     
+        echo $this->Html->script('/js/escapenews.js');    
         echo $this->fetch('script');
     ?>
     <link href='http://fonts.googleapis.com/css?family=Sanchez' rel='stylesheet' type='text/css'>
@@ -65,70 +61,47 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="/">K9 STREET POKER</a>
+                        <a class="navbar-brand" href="/">Escape News</a>
                     </div>
                         <div id="navbar" class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li><a href="/">Home</a></li>
+                                <li><a href="/Noticias/Ver">Home</a></li>
                                 <li class="dropdown">
-                                    <a href="/jogadores/ver" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Jogadores<span class="caret"></span></a>
+                                    <a href="/Usuarios/Ver" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Usuarios<span class="caret"></span></a>
                                     <ul  class="dropdown-menu" role="menu">
                                         <?php if($this->Session->read('Auth.User.privilegio') == 1): ?>
-                                        <li><a href="/jogadores/novo">Novo</a></li>
-                                        <li><a href="/jogadores/editar">Editar</a></li>
+                                        <li><a href="/Usuarios/Novo">Novo</a></li>
+                                        <li><a href="/Usuarios/Editar">Editar</a></li>
                                         <?php endif; ?>
-                                        <li><a href="/jogadores/ver">Ver</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="/jogadores/verTodos">Ver Todos</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="/Torneios/view" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Torneios <span class="caret"></span></a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <?php if($this->Session->read('Auth.User.privilegio') == 1): ?>
-                                        <li><a href="/Torneios/novo">Novo</a></li>
-                                        <li class="dropdown-submenu">
-                                            <a tabindex="-1" href="/Torneios/editar">Editar</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="/JogadoresTorneios/editarTabelaJogadores">Tabela Jogadores</a></li>
-                                                <li><a href="/Torneios/editar">Torneios</a></li>
-                                            </ul>
-                                        </li>
-                                        <?php endif; ?>
-                                        <li class="dropdown-submenu">
-                                            <a tabindex="-1" href="/Torneios/ver">Ver</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="/JogadoresTorneios/verTabelaJogadores">Tabela Jogadores</a></li>
-                                                <li><a href="/Torneios/ver">Torneios</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li><a href="/Torneios/VerTodos">Ver Todos</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Espaço K9<span class="caret"></span></a>
-                                    <ul  class="dropdown-menu" role="menu">
-                                        <li class="dropdown-submenu">
-                                            <a tabindex="-1" href="/JogoAgora/Ver">Jogo Agora</a>
-                                            <?php if($this->Session->read('Auth.User.privilegio') == 1): ?>
-                                            <ul class="dropdown-menu">                                                
-                                                <li><a href="/JogoAgora/Editar">Editar</a></li>                                                
-                                            </ul>
-                                            <?php endif; ?>
-                                        </li>
-                                        <li><a href="/Forum/Ver">Forum</a></li>
-                                        <li><a href="/Album/Ver">Galeria de Fotos</a></li>
+                                        <li><a href="/Usuarios/Ver">Ver</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="/Contatos/View/">Contato</a></li>
+                                <li><a href="/Pages/Sobre/">Sobre</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-                                <li>                                    
-                                    <a style="color:white"><img src="/app/webroot/img/pics/<?php echo $this->Session->read('Auth.User.id'); ?>.jpg" style="max-width: 19px; max-height: 19px; margin: -5px 10px 0 0;"/><?php echo $this->Session->read('Auth.User.nome'); ?></a>
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                        <img src="/app/webroot/img/pics/<?php echo $this->Session->read('Auth.User.id'); ?>.jpg" style="max-width: 19px; max-height: 19px; margin: -5px 10px 0 0;"/>
+                                        <?php echo $this->Session->read('Auth.User.nome'); ?>
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul  class="dropdown-menu" role="menu">
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="/Usuarios/Preferencias"><i class="glyphicon glyphicon-cog"></i>  Preferências</a>
+                                            <ul class="dropdown-menu">                                                
+                                                <li>
+                                                    <a href="/Usuarios/EditarSenha">Editar Senha</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/Usuarios/EditarFoto">Editar Foto</a>
+                                                </li>          
+                                            </ul>
+                                        </li>
+                                    </ul>                                    
                                 </li>
                                 <li>
-                                    <a href="../../jogadores/logout">Sair</a>
+                                    <a href="../../Usuarios/logout">Sair</a>
                                 </li>
                             </ul>
                         </div>
@@ -143,7 +116,7 @@
     </div>
     </div>
     <footer>
-        <p>© 2015 K9STREETPOKER - Todos os direitos reservados<a style="float: right; text-decoration: none; color: #808080;">Érico de Souza Loewe</a></p>
+        <p>© 2015 Escape News - Todos os direitos reservados<a style="float: right; text-decoration: none; color: #808080;">Érico de Souza Loewe</a></p>
     </footer>
 </body>
 </html>

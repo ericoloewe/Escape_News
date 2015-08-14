@@ -47,4 +47,8 @@ class PagesController extends AppController {
         $main_page = '/Pages/Main';        
         $this->render($main_page);
 	}
+
+    public function sobre() {
+
+	}
 }

@@ -123,9 +123,14 @@ $Session = new SessionComponent(new ComponentCollection());
  
 // check if the user logged in
 if ($Session->read('Auth.User')) {
-    Configure::write('Route.default', array('controller' => 'pages', 'action' => 'display'));
+    if(isset($_SESSION['Auth']['User']["password"]))
+    {
+        Configure::write('Route.default', array('controller' => 'usuarios', 'action' => 'EditarSenha'));
+    } else {
+        Configure::write('Route.default', array('controller' => 'pages', 'action' => 'display'));
+    }    
 }
 // nope, user not logged in
 else {
-    Configure::write('Route.default', array('controller' => 'jogadores', 'action' => 'login'));
+    Configure::write('Route.default', array('controller' => 'usuarios', 'action' => 'login'));
 }

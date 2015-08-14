@@ -12,3 +12,27 @@ body {
 .content{
     padding: 10px 10px 20px 10px;
 }
+
+.container .content{    
+    height:100%;
+    min-height: 500px;    
+}
+
+.navbar{
+    background-color: #bbb;    
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #000;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #000;
+}
+
+.navbar-inverse {
+  border-color: #bbb;
+}
+
+.bs-docs-nav {
+    background-color: #fff;
+}

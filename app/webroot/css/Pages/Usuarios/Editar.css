@@ -1,0 +1,34 @@
+.form-horizontal{
+    max-width: 980px;
+}
+
+.img-thumbnail{
+    float: left;
+    margin: 0 0 0 18%;
+    width: 175px;
+    height: 180px;
+}
+
+#InputFile{
+    float: right;
+}
+
+#exampleInputFile{
+    float: right;
+    margin: -40px 0 0 0;
+}
+
+.begin{
+    margin: 1% 0 0 1%;
+    float: left;
+}
+
+#deletarUsuario{
+    float: right;
+    margin-right: 150px;
+}
+
+#deletarUsuario a{
+    text-decoration: none;
+    color: #fff;
+}

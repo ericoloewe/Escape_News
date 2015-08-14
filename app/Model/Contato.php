@@ -1,8 +1,6 @@
 <?php
-
 class Contato extends AppModel {
     public $name = 'Contato';
-    public $useTable = 'contato';
 
     public $validate = array(
         'nome' => array(
@@ -23,7 +21,6 @@ class Contato extends AppModel {
                 'message' => 'É necessario uma mensagem!'
             )
         )   
-    );    
+    );
 }
-
 ?>

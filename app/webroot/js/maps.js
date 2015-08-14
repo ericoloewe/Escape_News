@@ -1,5 +1,5 @@
 var map;
-var pointer = new google.maps.LatLng(-29.6932058,-51.2229969);
+var pointer = new google.maps.LatLng(-29.6887157,-51.1401334);
 	
 function map_init() {			
     var mapoptions = {
@@ -15,11 +15,11 @@ function map_init() {
       
     var contentString = 
 		'<div id="mapInfo">'+
-		'<p><strong>K9StreetPoker</strong><br>'+
-		'Rua Professor Miguel de Vargas, 285<br>'+
-        'Portao/RS - Brasil<br>'+
-		'P: +55 (51) 9834-0648</p>'+
-		'<a href="http://www.k9streetpoker.com/" target="_blank">Venha nos visitar</a>'+
+		'<p><strong>Escape</strong><br>'+
+		'R. Felipe Bernd, 87, sala 01, B. Rio Branco, CEP: 93310-170 <br>'+
+        'Novo Hamburgo/RS - Brasil<br>'+
+		'P: +55 (51) 3065-2624</p>'+
+		'<a href="http://www.escape.ppg.br/" target="_blank">Venha nos visitar</a>'+
 		'</div>';
  
     var infowindow = new google.maps.InfoWindow({

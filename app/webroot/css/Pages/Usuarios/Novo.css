@@ -1,0 +1,40 @@
+.form-horizontal{
+    max-width: 980px;
+}
+
+.img-thumbnail{
+    float: left;
+    margin: 0 0 0 18%;
+    width: 175px;
+    height: 180px;
+}
+
+#InputFile{
+    float: right;
+}
+
+.container{
+    max-width: 380px;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.71);  
+}
+
+.control-label{
+    color: #ccc;
+}
+
+input{
+    color: #fff;
+    background-color: #333;
+}
+
+.form-control {
+    border-radius: 0;
+    background-color: #333;
+    color: #fff;
+}
+
+.img-thumbnail{
+    background-color: #333;
+}

@@ -40,7 +40,7 @@ class AppController extends Controller {
             'loginAction' => '/',            
             'authenticate' => array(
                 'Form' => array(
-                    'userModel' => 'Jogador',
+                    'userModel' => 'Usuario',
                         'fields' => array(
                         'username' => 'email',
                         'password' => 'password'
